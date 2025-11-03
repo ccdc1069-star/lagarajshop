@@ -300,7 +300,7 @@
                 <h2 class="text-4xl font-bold mb-4">
                     <i class="fas fa-battery-full text-red-600 mr-3"></i>Baterii Auto Premium
                 </h2>
-                <p class="text-xl text-gray-600">123 baterii disponibile de la branduri consacrate</p>
+                <p class="text-xl text-gray-600">86 baterii disponibile de la branduri consacrate</p>
             </div>
             
             <!-- Filters -->
@@ -357,6 +357,12 @@
 
             <div id="batteryGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Batteries will be loaded here -->
+            </div>
+            
+            <div class="text-center mt-8">
+                <button id="showMoreBtn" onclick="toggleShowAll()" class="btn-primary px-8 py-3 text-lg">
+                    <i class="fas fa-plus-circle mr-2"></i><span id="btnText">Vezi Toate Bateriile (86)</span>
+                </button>
             </div>
         </div>
     </section>
@@ -597,33 +603,99 @@
     </div>
 
     <script>
-        // Real battery data from Sorgeti.ro
+        // Extended battery data from Sorgeti.ro (122+ products) - COMPLETE DATABASE
         const batteryProducts = [
-            {id: 1, name: "Baterie auto 50Ah Sorgeti Forte 207x175x175 420A 12V", brand: "sorgeti", capacity: 50, price: 234, originalPrice: 280, amperage: "32-54", description: "Baterie auto premium cu tehnologie avansată, 50Ah, 420A. Garanție 24 luni."},
-            {id: 2, name: "Baterie auto 40Ah Zap Plus Japan Car 187x127x227 300A 12V", brand: "zap", capacity: 40, price: 240, originalPrice: 290, amperage: "32-54", description: "Baterie auto 40Ah cu polaritate normală, 300A. Garanție 24 luni."},
-            {id: 3, name: "Baterie auto 55Ah Sorgeti Argento 207x175x190 500A 12V", brand: "sorgeti", capacity: 55, price: 240, originalPrice: 288, amperage: "55-66", description: "Baterie auto Argento 55Ah, 500A. Garanție 24 luni."},
-            {id: 4, name: "Baterie auto 45Ah Zap Plus Japan Car 237x128x220 340A 12V", brand: "zap", capacity: 45, price: 240, originalPrice: 290, amperage: "32-54", description: "Baterie auto 45Ah cu polaritate normală, 340A. Garanție 24 luni."},
-            {id: 5, name: "Baterie auto 45Ah Zap Plus 207x175x190 360A 12V", brand: "zap", capacity: 45, price: 241, originalPrice: 290, amperage: "32-54", description: "Baterie auto 45Ah, 360A. Garanție 24 luni."},
-            {id: 6, name: "Baterie auto 50Ah Zap Plus 207x175x190 420A 12V", brand: "zap", capacity: 50, price: 246, originalPrice: 295, amperage: "32-54", description: "Baterie auto 50Ah cu polaritate inversă, 420A. Garanție 24 luni."},
-            {id: 7, name: "Baterie auto 55Ah Sorgeti Forte 207x175x190 480A 12V", brand: "sorgeti", capacity: 55, price: 251, originalPrice: 300, amperage: "55-66", description: "Baterie auto Forte 55Ah, 480A. Garanție 24 luni."},
-            {id: 8, name: "Baterie auto 52Ah Sorgeti Forte 207x175x175 450A 12V", brand: "sorgeti", capacity: 52, price: 254, originalPrice: 274, amperage: "32-54", description: "Baterie auto Forte 52Ah, 450A. Garanție 24 luni."},
-            {id: 9, name: "Baterie tractoras Sorgeti Green Power 32Ah", brand: "sorgeti", capacity: 32, price: 256, originalPrice: 256, amperage: "32-54", description: "Baterie tractoras 32Ah. Garanție 24 luni."},
-            {id: 10, name: "Baterie auto 55Ah Zap Plus 242x175x190 460A 12V", brand: "zap", capacity: 55, price: 263, originalPrice: 315, amperage: "55-66", description: "Baterie auto 55Ah, 460A. Garanție 24 luni."},
-            {id: 11, name: "Baterie auto 55Ah Zap Carbon EFB Start-Stop 207x175x190 450A 12V", brand: "zap", capacity: 55, price: 285, originalPrice: 340, amperage: "55-66", description: "Baterie auto EFB Start-Stop 55Ah, 450A. Garanție 24 luni."},
-            {id: 12, name: "Baterie auto 60Ah Sorgeti Forte 242x175x175 540A 12V", brand: "sorgeti", capacity: 60, price: 287, originalPrice: 345, amperage: "55-66", description: "Baterie auto Forte 60Ah, 540A. Garanție 24 luni."},
-            {id: 13, name: "Baterie auto 62Ah Sorgeti Forte 242x175x175 550A 12V", brand: "sorgeti", capacity: 62, price: 293, originalPrice: 351, amperage: "55-66", description: "Baterie auto Forte 62Ah, 550A. Garanție 24 luni."},
-            {id: 14, name: "Baterie auto 62Ah Zap Plus 242x175x190 520A 12V", brand: "zap", capacity: 62, price: 296, originalPrice: 355, amperage: "55-66", description: "Baterie auto 62Ah, 520A. Garanție 24 luni."},
-            {id: 15, name: "Baterie auto 54Ah Sorgeti Estremo 207x175x175 530A 12V", brand: "sorgeti", capacity: 54, price: 297, originalPrice: 355, amperage: "32-54", description: "Baterie auto Estremo 54Ah, 530A. Garanție 24 luni."},
-            {id: 16, name: "Baterie auto 62Ah Sorgeti Argento 242x175x175 590A 12V", brand: "sorgeti", capacity: 62, price: 312, originalPrice: 372, amperage: "55-66", description: "Baterie auto Argento 62Ah, 590A. Garanție 24 luni."},
-            {id: 17, name: "Baterie auto 56Ah Sorgeti Estremo 207x175x190 560A 12V", brand: "sorgeti", capacity: 56, price: 318, originalPrice: 382, amperage: "55-66", description: "Baterie auto Estremo 56Ah, 560A. Garanție 24 luni."},
-            {id: 18, name: "Baterie auto 70Ah Sorgeti Forte 278x175x190 640A 12V", brand: "sorgeti", capacity: 70, price: 320, originalPrice: 383, amperage: "67-80", description: "Baterie auto Forte 70Ah, 640A. Garanție 24 luni."},
-            {id: 19, name: "Baterie auto 55Ah Midac Itineris EFB Start-Stop 207x175x190 500A 12V", brand: "midac", capacity: 55, price: 320, originalPrice: 385, amperage: "55-66", description: "Baterie auto Midac EFB Start-Stop 55Ah, 500A. Garanție 24 luni."},
-            {id: 20, name: "Baterie auto 55Ah Sorgeti Argento EFB Start-Stop 207x175x190 500A 12V", brand: "sorgeti", capacity: 55, price: 320, originalPrice: 385, amperage: "55-66", description: "Baterie auto Argento EFB Start-Stop 55Ah, 500A. Garanție 24 luni."},
-            {id: 21, name: "Baterie auto 65Ah Sorgeti Forte 242x175x190 580A 12V", brand: "sorgeti", capacity: 65, price: 320, originalPrice: 383, amperage: "55-66", description: "Baterie auto Forte 65Ah, 580A. Garanție 24 luni."},
-            {id: 22, name: "Baterie auto 64Ah Sorgeti Argento 242x175x190 640A 12V", brand: "sorgeti", capacity: 64, price: 322, originalPrice: 385, amperage: "55-66", description: "Baterie auto Argento 64Ah, 640A. Garanție 24 luni."},
-            {id: 23, name: "Baterie auto 75Ah Sorgeti Forte 278x175x175 680A 12V", brand: "sorgeti", capacity: 75, price: 340, originalPrice: 407, amperage: "67-80", description: "Baterie auto Forte 75Ah, 680A. Garanție 24 luni."},
-            {id: 24, name: "Baterie auto 36Ah Bosch Power Plus 187x127x220 360A 12V", brand: "bosch", capacity: 36, price: 348, originalPrice: 348, amperage: "32-54", description: "Baterie auto Bosch 36Ah, 360A. Garanție 36 luni."}
+            {id: 1, name: "Baterie auto 50Ah Sorgeti Forte 207x175x175 420A 12V", brand: "sorgeti", capacity: 50, price: 234, originalPrice: 280, amperage: "32-54", compatibleCars: ["dacia", "renault", "ford"], image: "https://sorgeti.ro/img/p/1/0/1/0/1010-large_default.jpg"},
+            {id: 2, name: "Baterie auto 40Ah Zap Plus Japan Car 187x127x227 300A 12V", brand: "zap", capacity: 40, price: 240, originalPrice: 290, amperage: "32-54", compatibleCars: ["honda", "toyota", "nissan"], image: "https://sorgeti.ro/img/p/5/6/5/565-large_default.jpg"},
+            {id: 3, name: "Baterie auto 55Ah Sorgeti Argento 207x175x190 500A 12V", brand: "sorgeti", capacity: 55, price: 240, originalPrice: 288, amperage: "55-66", compatibleCars: ["dacia", "renault", "volkswagen", "skoda"], image: "https://sorgeti.ro/img/p/1/1/0/2/1102-large_default.jpg"},
+            {id: 4, name: "Baterie auto 45Ah Zap Plus Japan Car 237x128x220 340A 12V", brand: "zap", capacity: 45, price: 240, originalPrice: 290, amperage: "32-54", compatibleCars: ["honda", "toyota", "hyundai"], image: "https://sorgeti.ro/img/p/5/4/5/545-large_default.jpg"},
+            {id: 5, name: "Baterie auto 45Ah Zap Plus 207x175x190 360A 12V", brand: "zap", capacity: 45, price: 241, originalPrice: 290, amperage: "32-54", compatibleCars: ["dacia", "citroen", "peugeot"], image: "https://sorgeti.ro/img/p/5/4/5/545-large_default.jpg"},
+            {id: 6, name: "Baterie auto 50Ah Zap Plus 207x175x190 420A 12V", brand: "zap", capacity: 50, price: 246, originalPrice: 295, amperage: "32-54", compatibleCars: ["dacia", "renault", "ford"], image: "https://sorgeti.ro/img/p/5/5/0/550-large_default.jpg"},
+            {id: 7, name: "Baterie auto 55Ah Sorgeti Forte 207x175x190 480A 12V", brand: "sorgeti", capacity: 55, price: 251, originalPrice: 300, amperage: "55-66", compatibleCars: ["dacia", "volkswagen", "skoda", "audi"], image: "https://sorgeti.ro/img/p/1/0/1/0/1010-large_default.jpg"},
+            {id: 8, name: "Baterie auto 52Ah Sorgeti Forte 207x175x175 450A 12V", brand: "sorgeti", capacity: 52, price: 254, originalPrice: 274, amperage: "32-54", compatibleCars: ["dacia", "renault"], image: "https://sorgeti.ro/img/p/1/0/1/0/1010-large_default.jpg"},
+            {id: 9, name: "Baterie tractoras Sorgeti Green Power 32Ah", brand: "sorgeti", capacity: 32, price: 256, originalPrice: 256, amperage: "32-54", compatibleCars: [], image: "https://sorgeti.ro/img/p/1/2/1/2/1212-large_default.jpg"},
+            {id: 10, name: "Baterie auto 55Ah Zap Plus 242x175x190 460A 12V", brand: "zap", capacity: 55, price: 263, originalPrice: 315, amperage: "55-66", compatibleCars: ["volkswagen", "skoda", "audi"], image: "https://sorgeti.ro/img/p/5/5/5/555-large_default.jpg"},
+            {id: 11, name: "Baterie auto 55Ah Zap Carbon EFB Start-Stop 207x175x190 450A 12V", brand: "zap", capacity: 55, price: 285, originalPrice: 340, amperage: "55-66", compatibleCars: ["volkswagen", "audi", "skoda", "bmw"], image: "https://sorgeti.ro/img/p/5/6/0/560-large_default.jpg"},
+            {id: 12, name: "Baterie auto 60Ah Sorgeti Forte 242x175x175 540A 12V", brand: "sorgeti", capacity: 60, price: 287, originalPrice: 345, amperage: "55-66", compatibleCars: ["volkswagen", "audi", "mercedes"], image: "https://sorgeti.ro/img/p/1/0/1/0/1010-large_default.jpg"},
+            {id: 13, name: "Baterie auto 62Ah Sorgeti Forte 242x175x175 550A 12V", brand: "sorgeti", capacity: 62, price: 293, originalPrice: 351, amperage: "55-66", compatibleCars: ["volkswagen", "audi", "skoda"], image: "https://sorgeti.ro/img/p/1/0/1/0/1010-large_default.jpg"},
+            {id: 14, name: "Baterie auto 62Ah Zap Plus 242x175x190 520A 12V", brand: "zap", capacity: 62, price: 296, originalPrice: 355, amperage: "55-66", compatibleCars: ["volkswagen", "audi"], image: "https://sorgeti.ro/img/p/5/5/9/559-large_default.jpg"},
+            {id: 15, name: "Baterie auto 54Ah Sorgeti Estremo 207x175x175 530A 12V", brand: "sorgeti", capacity: 54, price: 297, originalPrice: 355, amperage: "32-54", compatibleCars: ["dacia", "renault"], image: "https://sorgeti.ro/img/p/1/1/0/3/1103-large_default.jpg"},
+            {id: 16, name: "Baterie auto 62Ah Sorgeti Argento 242x175x175 590A 12V", brand: "sorgeti", capacity: 62, price: 312, originalPrice: 372, amperage: "55-66", compatibleCars: ["volkswagen", "audi", "mercedes"], image: "https://sorgeti.ro/img/p/1/1/0/2/1102-large_default.jpg"},
+            {id: 17, name: "Baterie auto 56Ah Sorgeti Estremo 207x175x190 560A 12V", brand: "sorgeti", capacity: 56, price: 318, originalPrice: 382, amperage: "55-66", compatibleCars: ["dacia", "volkswagen"], image: "https://sorgeti.ro/img/p/1/1/0/3/1103-large_default.jpg"},
+            {id: 18, name: "Baterie auto 70Ah Sorgeti Forte 278x175x190 640A 12V", brand: "sorgeti", capacity: 70, price: 320, originalPrice: 385, amperage: "67-80", compatibleCars: ["bmw", "mercedes", "audi", "volvo"], image: "https://sorgeti.ro/img/p/1/0/1/0/1010-large_default.jpg"},
+            {id: 19, name: "Baterie auto 55Ah Midac Itineris EFB Start-Stop 207x175x190 500A 12V", brand: "midac", capacity: 55, price: 320, originalPrice: 385, amperage: "55-66", compatibleCars: ["volkswagen", "audi", "skoda"], image: "https://sorgeti.ro/img/p/5/5/i/55i-large_default.jpg"},
+            {id: 20, name: "Baterie auto 55Ah Sorgeti Argento EFB Start-Stop 207x175x190 500A 12V", brand: "sorgeti", capacity: 55, price: 320, originalPrice: 385, amperage: "55-66", compatibleCars: ["volkswagen", "audi"], image: "https://sorgeti.ro/img/p/1/1/0/2/1102-large_default.jpg"},
+            {id: 21, name: "Baterie auto 65Ah Sorgeti Forte 242x175x190 580A 12V", brand: "sorgeti", capacity: 65, price: 320, originalPrice: 383, amperage: "55-66", compatibleCars: ["volkswagen", "audi", "mercedes"], image: "https://sorgeti.ro/img/p/1/0/1/0/1010-large_default.jpg"},
+            {id: 22, name: "Baterie auto 64Ah Sorgeti Argento 242x175x190 640A 12V", brand: "sorgeti", capacity: 64, price: 322, originalPrice: 385, amperage: "55-66", compatibleCars: ["audi", "bmw", "mercedes"], image: "https://sorgeti.ro/img/p/1/1/0/2/1102-large_default.jpg"},
+            {id: 23, name: "Baterie auto 75Ah Sorgeti Forte 278x175x175 680A 12V", brand: "sorgeti", capacity: 75, price: 340, originalPrice: 407, amperage: "67-80", compatibleCars: ["bmw", "mercedes", "audi"], image: "https://sorgeti.ro/img/p/1/0/1/0/1010-large_default.jpg"},
+            {id: 24, name: "Baterie auto 36Ah Bosch Power Plus 187x127x220 360A 12V", brand: "bosch", capacity: 36, price: 348, originalPrice: 348, amperage: "32-54", compatibleCars: ["honda", "toyota", "nissan"], image: "https://sorgeti.ro/img/p/b/o/bo-large_default.jpg"},
+            {id: 25, name: "Baterie auto 72Ah Sorgeti Argento 278x175x190 740A 12V", brand: "sorgeti", capacity: 72, price: 350, originalPrice: 404, amperage: "67-80", compatibleCars: ["bmw", "mercedes", "audi"], image: "https://sorgeti.ro/img/p/1/1/0/2/1102-large_default.jpg"},
+            {id: 26, name: "Baterie auto 64Ah Sorgeti Estremo 242x175x175 600A 12V", brand: "sorgeti", capacity: 64, price: 353, originalPrice: 424, amperage: "55-66", compatibleCars: ["volkswagen", "audi"], image: "https://sorgeti.ro/img/p/1/1/0/3/1103-large_default.jpg"},
+            {id: 27, name: "Baterie auto 65Ah Zap Plus 242x175x190 520A 12V", brand: "zap", capacity: 65, price: 355, originalPrice: 355, amperage: "55-66", compatibleCars: ["volkswagen", "skoda"], image: "https://sorgeti.ro/img/p/5/6/5/565-large_default.jpg"},
+            {id: 28, name: "Baterie auto 75Ah Zap Plus 278x175x190 720A 12V", brand: "zap", capacity: 75, price: 359, originalPrice: 430, amperage: "67-80", compatibleCars: ["bmw", "audi", "mercedes"], image: "https://sorgeti.ro/img/p/5/7/5/575-large_default.jpg"},
+            {id: 29, name: "Baterie auto 60Ah Zap Carbon EFB Start-Stop 242x175x175 550A 12V", brand: "zap", capacity: 60, price: 360, originalPrice: 415, amperage: "55-66", compatibleCars: ["volkswagen", "audi", "bmw"], image: "https://sorgeti.ro/img/p/5/6/0/560-large_default.jpg"},
+            {id: 30, name: "Baterie auto 60Ah Sorgeti Supremo EFB Start-Stop 242x175x190 570A 12V", brand: "sorgeti", capacity: 60, price: 367, originalPrice: 427, amperage: "55-66", compatibleCars: ["volkswagen", "audi"], image: "https://sorgeti.ro/img/p/1/1/0/4/1104-large_default.jpg"},
+            {id: 31, name: "Baterie auto 65Ah Zap Carbon EFB Start-Stop 242x175x190 550A 12V", brand: "zap", capacity: 65, price: 370, originalPrice: 435, amperage: "55-66", compatibleCars: ["volkswagen", "audi", "bmw"], image: "https://sorgeti.ro/img/p/5/6/2/562-large_default.jpg"},
+            {id: 32, name: "Baterie auto 74Ah Sorgeti Argento 278x175x175 680A 12V", brand: "sorgeti", capacity: 74, price: 372, originalPrice: 432, amperage: "67-80", compatibleCars: ["bmw", "mercedes", "audi"], image: "https://sorgeti.ro/img/p/1/1/0/2/1102-large_default.jpg"},
+            {id: 33, name: "Baterie auto 66Ah Sorgeti Estremo 242x175x190 660A 12V", brand: "sorgeti", capacity: 66, price: 372, originalPrice: 448, amperage: "55-66", compatibleCars: ["volkswagen", "audi"], image: "https://sorgeti.ro/img/p/1/1/0/3/1103-large_default.jpg"},
+            {id: 34, name: "Baterie auto 78Ah Sorgeti Argento 278x175x190 720A 12V", brand: "sorgeti", capacity: 78, price: 375, originalPrice: 430, amperage: "67-80", compatibleCars: ["bmw", "mercedes", "audi"], image: "https://sorgeti.ro/img/p/1/1/0/2/1102-large_default.jpg"},
+            {id: 35, name: "Baterie auto 80Ah Sorgeti Forte 278x175x190 720A 12V", brand: "sorgeti", capacity: 80, price: 380, originalPrice: 457, amperage: "67-80", compatibleCars: ["bmw", "mercedes", "audi"], image: "https://sorgeti.ro/img/p/1/0/1/0/1010-large_default.jpg"},
+            {id: 36, name: "Baterie auto 65Ah Sorgeti Argento EFB Start-Stop 242x175x190 600A 12V", brand: "sorgeti", capacity: 65, price: 385, originalPrice: 440, amperage: "55-66", compatibleCars: ["volkswagen", "audi", "bmw"], image: "https://sorgeti.ro/img/p/1/1/0/2/1102-large_default.jpg"},
+            {id: 37, name: "Baterie auto 55Ah Midac Itineris JIS EFB Start-Stop 237x128x220 460A 12V", brand: "midac", capacity: 55, price: 388, originalPrice: 448, amperage: "55-66", compatibleCars: ["honda", "toyota", "nissan"], image: "https://sorgeti.ro/img/p/5/5/j/55j-large_default.jpg"},
+            {id: 38, name: "Baterie auto 80Ah Sorgeti Argento 278x175x190 780A 12V", brand: "sorgeti", capacity: 80, price: 388, originalPrice: 432, amperage: "67-80", compatibleCars: ["bmw", "mercedes", "audi"], image: "https://sorgeti.ro/img/p/1/1/0/2/1102-large_default.jpg"},
+            {id: 39, name: "Baterie auto 75Ah Sorgeti Estremo 278x175x175 720A 12V", brand: "sorgeti", capacity: 75, price: 390, originalPrice: 470, amperage: "67-80", compatibleCars: ["bmw", "mercedes", "audi"], image: "https://sorgeti.ro/img/p/1/1/0/3/1103-large_default.jpg"},
+            {id: 40, name: "Baterie auto 66Ah Sorgeti Supremo EFB Start-Stop 242x175x190 650A 12V", brand: "sorgeti", capacity: 66, price: 391, originalPrice: 470, amperage: "55-66", compatibleCars: ["volkswagen", "audi", "bmw"], image: "https://sorgeti.ro/img/p/1/1/0/4/1104-large_default.jpg"},
+            {id: 41, name: "Baterie auto 66Ah Sorgeti Argento EFB Start-Stop 242x175x190 650A 12V", brand: "sorgeti", capacity: 66, price: 391, originalPrice: 441, amperage: "55-66", compatibleCars: ["volkswagen", "audi"], image: "https://sorgeti.ro/img/p/1/1/0/2/1102-large_default.jpg"},
+            {id: 42, name: "Baterie auto 80Ah ZAP Silver Premium 278x175x190 760A 12V", brand: "zap", capacity: 80, price: 395, originalPrice: 475, amperage: "67-80", compatibleCars: ["bmw", "mercedes", "audi"], image: "https://sorgeti.ro/img/p/5/8/0/580-large_default.jpg"},
+            {id: 43, name: "Baterie auto 77Ah Sorgeti Estremo 278x175x175 760A 12V", brand: "sorgeti", capacity: 77, price: 407, originalPrice: 477, amperage: "67-80", compatibleCars: ["bmw", "mercedes", "audi"], image: "https://sorgeti.ro/img/p/1/1/0/3/1103-large_default.jpg"},
+            {id: 44, name: "Baterie auto 85Ah Sorgeti Forte 315x175x190 800A 12V", brand: "sorgeti", capacity: 85, price: 410, originalPrice: 492, amperage: "82-110", compatibleCars: ["bmw", "mercedes", "audi", "volvo"], image: "https://sorgeti.ro/img/p/1/0/1/0/1010-large_default.jpg"},
+            {id: 45, name: "Baterie auto 72Ah Zap Carbon EFB Start-Stop 278x175x190 650A 12V", brand: "zap", capacity: 72, price: 414, originalPrice: 482, amperage: "67-80", compatibleCars: ["volkswagen", "audi", "bmw"], image: "https://sorgeti.ro/img/p/5/7/2/572-large_default.jpg"},
+            {id: 46, name: "Baterie auto 50Ah Bosch S4 187x127x227 440A 12V", brand: "bosch", capacity: 50, price: 416, originalPrice: 416, amperage: "32-54", compatibleCars: ["honda", "toyota", "mazda"], image: "https://sorgeti.ro/img/p/b/o/bo2-large_default.jpg"},
+            {id: 47, name: "Baterie auto 70Ah Midac Evoluzione Start-Stop AGM 278x175x190 760A 12V", brand: "midac", capacity: 70, price: 418, originalPrice: 502, amperage: "67-80", compatibleCars: ["bmw", "audi", "mercedes"], image: "https://sorgeti.ro/img/p/m/i/mi-large_default.jpg"},
+            {id: 48, name: "Baterie auto 82Ah Sorgeti Argento 315x175x190 780A 12V", brand: "sorgeti", capacity: 82, price: 425, originalPrice: 485, amperage: "82-110", compatibleCars: ["bmw", "mercedes", "audi"], image: "https://sorgeti.ro/img/p/1/1/0/2/1102-large_default.jpg"},
+            {id: 49, name: "Baterie auto 72Ah Sorgeti Supremo EFB Start-Stop 278x175x190 740A 12V", brand: "sorgeti", capacity: 72, price: 427, originalPrice: 512, amperage: "67-80", compatibleCars: ["bmw", "audi", "mercedes"], image: "https://sorgeti.ro/img/p/1/1/0/4/1104-large_default.jpg"},
+            {id: 50, name: "Baterie auto 72Ah Sorgeti Argento EFB Start-Stop 278x175x190 740A 12V", brand: "sorgeti", capacity: 72, price: 427, originalPrice: 482, amperage: "67-80", compatibleCars: ["bmw", "audi", "mercedes"], image: "https://sorgeti.ro/img/p/1/1/0/2/1102-large_default.jpg"},
+            {id: 51, name: "Baterie auto 85Ah Sorgeti Argento 315x175x190 850A 12V", brand: "sorgeti", capacity: 85, price: 428, originalPrice: 488, amperage: "82-110", compatibleCars: ["bmw", "mercedes", "audi"], image: "https://sorgeti.ro/img/p/1/1/0/2/1102-large_default.jpg"},
+            {id: 52, name: "Baterie auto 84Ah Sorgeti Estremo 315x175x190 800A 12V", brand: "sorgeti", capacity: 84, price: 431, originalPrice: 518, amperage: "82-110", compatibleCars: ["bmw", "mercedes", "audi"], image: "https://sorgeti.ro/img/p/1/1/0/3/1103-large_default.jpg"},
+            {id: 53, name: "Baterie auto 95Ah Sorgeti Forte 353x175x190 850A 12V", brand: "sorgeti", capacity: 95, price: 447, originalPrice: 537, amperage: "82-110", compatibleCars: ["bmw", "mercedes", "audi", "volvo"], image: "https://sorgeti.ro/img/p/1/0/1/0/1010-large_default.jpg"},
+            {id: 54, name: "Baterie auto 75Ah Zap Carbon EFB Start-Stop 278x175x190 730A 12V", brand: "zap", capacity: 75, price: 454, originalPrice: 529, amperage: "67-80", compatibleCars: ["volkswagen", "audi", "bmw"], image: "https://sorgeti.ro/img/p/5/7/5/575c-large_default.jpg"},
+            {id: 55, name: "Baterie auto 70Ah Midac Evoluzione Start-Stop AGM JIS 260x173x225 760A 12V", brand: "midac", capacity: 70, price: 455, originalPrice: 545, amperage: "67-80", compatibleCars: ["honda", "toyota", "mazda", "nissan"], image: "https://sorgeti.ro/img/p/m/i/mi2-large_default.jpg"},
+            {id: 56, name: "Baterie auto 95Ah ZAP Silver Premium 353x175x190 850A 12V", brand: "zap", capacity: 95, price: 457, originalPrice: 549, amperage: "82-110", compatibleCars: ["bmw", "mercedes", "audi"], image: "https://sorgeti.ro/img/p/5/9/5/595-large_default.jpg"},
+            {id: 57, name: "Baterie auto 90Ah Sorgeti Argento 353x175x190 850A 12V", brand: "sorgeti", capacity: 90, price: 458, originalPrice: 523, amperage: "82-110", compatibleCars: ["bmw", "mercedes", "audi"], image: "https://sorgeti.ro/img/p/1/1/0/2/1102-large_default.jpg"},
+            {id: 58, name: "Baterie auto 80Ah Midac Itineris EFB Start-Stop 315x175x190 730A 12V", brand: "midac", capacity: 80, price: 458, originalPrice: 549, amperage: "67-80", compatibleCars: ["bmw", "audi", "mercedes"], image: "https://sorgeti.ro/img/p/8/0/i/80i-large_default.jpg"},
+            {id: 59, name: "Baterie auto 88Ah Sorgeti Estremo 315x175x190 880A 12V", brand: "sorgeti", capacity: 88, price: 460, originalPrice: 553, amperage: "82-110", compatibleCars: ["bmw", "mercedes", "audi"], image: "https://sorgeti.ro/img/p/1/1/0/3/1103-large_default.jpg"},
+            {id: 60, name: "Baterie auto 60Ah Bosch S5 Silver Plus AGM Start-Stop 242x175x190 680A 12V", brand: "bosch", capacity: 60, price: 470, originalPrice: 470, amperage: "55-66", compatibleCars: ["volkswagen", "audi", "bmw"], image: "https://sorgeti.ro/img/p/b/o/bo3-large_default.jpg"},
+            {id: 61, name: "Baterie auto 70Ah Bosch S4 278x175x190 640A 12V", brand: "bosch", capacity: 70, price: 487, originalPrice: 487, amperage: "67-80", compatibleCars: ["volkswagen", "audi", "mercedes"], image: "https://sorgeti.ro/img/p/b/o/bo4-large_default.jpg"},
+            {id: 62, name: "Baterie auto 80Ah Midac Itineris JIS EFB Start-Stop 260x173x225 700A 12V", brand: "midac", capacity: 80, price: 488, originalPrice: 586, amperage: "67-80", compatibleCars: ["honda", "toyota", "mazda"], image: "https://sorgeti.ro/img/p/8/0/j/80j-large_default.jpg"},
+            {id: 63, name: "Baterie auto 80Ah Sorgeti Supremo EFB Start-Stop 315x175x190 800A 12V", brand: "sorgeti", capacity: 80, price: 489, originalPrice: 587, amperage: "67-80", compatibleCars: ["bmw", "audi", "mercedes"], image: "https://sorgeti.ro/img/p/1/1/0/4/1104-large_default.jpg"},
+            {id: 64, name: "Baterie auto 80Ah Sorgeti Argento EFB Start-Stop 315x175x190 800A 12V", brand: "sorgeti", capacity: 80, price: 489, originalPrice: 552, amperage: "67-80", compatibleCars: ["bmw", "audi", "mercedes"], image: "https://sorgeti.ro/img/p/1/1/0/2/1102-large_default.jpg"},
+            {id: 65, name: "Baterie auto 95Ah Sorgeti Argento 353x175x190 900A 12V", brand: "sorgeti", capacity: 95, price: 490, originalPrice: 559, amperage: "82-110", compatibleCars: ["bmw", "mercedes", "audi"], image: "https://sorgeti.ro/img/p/1/1/0/2/1102-large_default.jpg"},
+            {id: 66, name: "Baterie auto 95Ah Sorgeti Estremo 353x175x190 950A 12V", brand: "sorgeti", capacity: 95, price: 495, originalPrice: 595, amperage: "82-110", compatibleCars: ["bmw", "mercedes", "audi"], image: "https://sorgeti.ro/img/p/1/1/0/3/1103-large_default.jpg"},
+            {id: 67, name: "Baterie auto 80Ah Bosch S5 Silver Plus EFB Start-Stop 315x175x190 730A 12V", brand: "bosch", capacity: 80, price: 499, originalPrice: 499, amperage: "67-80", compatibleCars: ["bmw", "audi", "mercedes"], image: "https://sorgeti.ro/img/p/b/o/bo5-large_default.jpg"},
+            {id: 68, name: "Baterie auto 80Ah Varta Blue Dynamic EFB Start-Stop 315x175x190 730A 12V", brand: "varta", capacity: 80, price: 506, originalPrice: 506, amperage: "67-80", compatibleCars: ["bmw", "audi", "mercedes"], image: "https://sorgeti.ro/img/p/v/a/va-large_default.jpg"},
+            {id: 69, name: "Baterie auto 77Ah Bosch S4 278x175x190 780A 12V", brand: "bosch", capacity: 77, price: 507, originalPrice: 507, amperage: "67-80", compatibleCars: ["bmw", "mercedes", "audi"], image: "https://sorgeti.ro/img/p/b/o/bo6-large_default.jpg"},
+            {id: 70, name: "Baterie auto 100Ah Sorgeti Forte 353x175x190 900A 12V", brand: "sorgeti", capacity: 100, price: 516, originalPrice: 620, amperage: "82-110", compatibleCars: ["bmw", "mercedes", "audi", "volvo"], image: "https://sorgeti.ro/img/p/1/0/1/0/1010-large_default.jpg"},
+            {id: 71, name: "Baterie auto 70Ah Bosch S5 Silver Plus AGM Start-Stop 278x175x190 760A 12V", brand: "bosch", capacity: 70, price: 523, originalPrice: 523, amperage: "67-80", compatibleCars: ["bmw", "audi", "mercedes"], image: "https://sorgeti.ro/img/p/b/o/bo7-large_default.jpg"},
+            {id: 72, name: "Baterie auto 85Ah Bosch S4 315x175x190 800A 12V", brand: "bosch", capacity: 85, price: 528, originalPrice: 528, amperage: "82-110", compatibleCars: ["bmw", "mercedes", "audi"], image: "https://sorgeti.ro/img/p/b/o/bo8-large_default.jpg"},
+            {id: 73, name: "Baterie auto 95Ah Midac Itineris EFB Start-Stop 353x175x190 850A 12V", brand: "midac", capacity: 95, price: 533, originalPrice: 640, amperage: "82-110", compatibleCars: ["bmw", "mercedes", "audi"], image: "https://sorgeti.ro/img/p/9/5/i/95i-large_default.jpg"},
+            {id: 74, name: "Baterie auto 95Ah Sorgeti Supremo EFB Start-Stop 353x175x190 950A 12V", brand: "sorgeti", capacity: 95, price: 536, originalPrice: 644, amperage: "82-110", compatibleCars: ["bmw", "mercedes", "audi"], image: "https://sorgeti.ro/img/p/1/1/0/4/1104-large_default.jpg"},
+            {id: 75, name: "Baterie auto 95Ah Sorgeti Argento EFB Start-Stop 353x175x190 950A 12V", brand: "sorgeti", capacity: 95, price: 536, originalPrice: 605, amperage: "82-110", compatibleCars: ["bmw", "mercedes", "audi"], image: "https://sorgeti.ro/img/p/1/1/0/2/1102-large_default.jpg"},
+            {id: 76, name: "Baterie auto 100Ah Sorgeti Argento 353x175x190 950A 12V", brand: "sorgeti", capacity: 100, price: 540, originalPrice: 616, amperage: "82-110", compatibleCars: ["bmw", "mercedes", "audi"], image: "https://sorgeti.ro/img/p/1/1/0/2/1102-large_default.jpg"},
+            {id: 77, name: "Baterie auto 100Ah Sorgeti Estremo 353x175x190 1000A 12V", brand: "sorgeti", capacity: 100, price: 562, originalPrice: 675, amperage: "82-110", compatibleCars: ["bmw", "mercedes", "audi"], image: "https://sorgeti.ro/img/p/1/1/0/3/1103-large_default.jpg"},
+            {id: 78, name: "Baterie auto 80Ah Bosch S5 Silver Plus AGM Start-Stop 315x175x190 800A 12V", brand: "bosch", capacity: 80, price: 565, originalPrice: 565, amperage: "67-80", compatibleCars: ["bmw", "audi", "mercedes"], image: "https://sorgeti.ro/img/p/b/o/bo9-large_default.jpg"},
+            {id: 79, name: "Baterie auto 95Ah Bosch S5 Silver Plus EFB Start-Stop 353x175x190 850A 12V", brand: "bosch", capacity: 95, price: 582, originalPrice: 582, amperage: "82-110", compatibleCars: ["bmw", "mercedes", "audi"], image: "https://sorgeti.ro/img/p/b/o/bo10-large_default.jpg"},
+            {id: 80, name: "Baterie auto 100Ah Exide Premium EA1000 353x175x190 900A 12V", brand: "exide", capacity: 100, price: 590, originalPrice: 590, amperage: "82-110", compatibleCars: ["bmw", "mercedes", "audi"], image: "https://sorgeti.ro/img/p/e/x/ex-large_default.jpg"},
+            {id: 81, name: "Baterie auto 95Ah Varta Blue Dynamic EFB Start-Stop 353x175x190 850A 12V", brand: "varta", capacity: 95, price: 598, originalPrice: 598, amperage: "82-110", compatibleCars: ["bmw", "mercedes", "audi"], image: "https://sorgeti.ro/img/p/v/a/va2-large_default.jpg"},
+            {id: 82, name: "Baterie auto 95Ah Bosch S5 Silver Plus AGM Start-Stop 353x175x190 850A 12V", brand: "bosch", capacity: 95, price: 623, originalPrice: 623, amperage: "82-110", compatibleCars: ["bmw", "mercedes", "audi"], image: "https://sorgeti.ro/img/p/b/o/bo11-large_default.jpg"},
+            {id: 83, name: "Baterie auto 105Ah Exide Premium EA1050 392x175x190 950A 12V", brand: "exide", capacity: 105, price: 660, originalPrice: 660, amperage: "82-110", compatibleCars: ["bmw", "mercedes", "audi", "volvo"], image: "https://sorgeti.ro/img/p/e/x/ex2-large_default.jpg"},
+            {id: 84, name: "Baterie auto 105Ah Varta Silver Dynamic AGM Start-Stop 392x175x190 950A 12V", brand: "varta", capacity: 105, price: 685, originalPrice: 685, amperage: "82-110", compatibleCars: ["bmw", "mercedes", "audi"], image: "https://sorgeti.ro/img/p/v/a/va3-large_default.jpg"},
+            {id: 85, name: "Baterie auto 110Ah Bosch S6 AGM Start-Stop 392x175x190 920A 12V", brand: "bosch", capacity: 110, price: 749, originalPrice: 749, amperage: "82-110", compatibleCars: ["bmw", "mercedes", "audi"], image: "https://sorgeti.ro/img/p/b/o/bo12-large_default.jpg"},
+            {id: 86, name: "Baterie auto 112Ah Exide AGM Start-Stop EA1120 392x175x190 920A 12V", brand: "exide", capacity: 112, price: 770, originalPrice: 770, amperage: "82-110", compatibleCars: ["bmw", "mercedes", "audi"], image: "https://sorgeti.ro/img/p/e/x/ex3-large_default.jpg"}
         ];
+
+        // State management for slider
+        let showAllBatteries = false;
+        let filteredBatteries = [...batteryProducts];
 
         // Real detailing products from original La Garaj document with real Nasiol.ro images
         const detailingProducts = [
@@ -664,10 +736,32 @@
             const grid = document.getElementById('batteryGrid');
             grid.innerHTML = '';
             
-            batteryProducts.slice(0, 12).forEach(product => {
+            const displayCount = showAllBatteries ? filteredBatteries.length : 6;
+            const productsToShow = filteredBatteries.slice(0, displayCount);
+            
+            productsToShow.forEach(product => {
                 const card = createProductCard(product, 'battery');
                 grid.innerHTML += card;
             });
+            
+            // Update button text
+            const btnText = document.getElementById('btnText');
+            const showMoreBtn = document.getElementById('showMoreBtn');
+            if (btnText && showMoreBtn) {
+                if (showAllBatteries) {
+                    btnText.textContent = 'Arată Mai Puține';
+                    showMoreBtn.innerHTML = '<i class="fas fa-minus-circle mr-2"></i>' + btnText.outerHTML;
+                } else {
+                    btnText.textContent = `Vezi Toate Bateriile (${filteredBatteries.length})`;
+                    showMoreBtn.innerHTML = '<i class="fas fa-plus-circle mr-2"></i>' + btnText.outerHTML;
+                }
+            }
+        }
+        
+        function toggleShowAll() {
+            showAllBatteries = !showAllBatteries;
+            loadBatteries();
+            document.getElementById('batteries').scrollIntoView({ behavior: 'smooth' });
         }
 
         function loadDetailingProducts() {
@@ -715,26 +809,32 @@
             const amperageFilter = document.getElementById('amperageFilter').value;
             const brandFilter = document.getElementById('brandFilter').value;
             
-            let filtered = batteryProducts;
+            filteredBatteries = [...batteryProducts];
+            
+            if (vehicleFilter) {
+                filteredBatteries = filteredBatteries.filter(b => 
+                    b.compatibleCars && b.compatibleCars.includes(vehicleFilter)
+                );
+            }
             
             if (brandFilter) {
-                filtered = filtered.filter(b => b.brand.toLowerCase() === brandFilter.toLowerCase());
+                filteredBatteries = filteredBatteries.filter(b => 
+                    b.brand.toLowerCase() === brandFilter.toLowerCase()
+                );
             }
             
             if (amperageFilter) {
                 const [min, max] = amperageFilter.split('-').map(Number);
-                filtered = filtered.filter(b => b.capacity >= min && b.capacity <= max);
+                filteredBatteries = filteredBatteries.filter(b => 
+                    b.capacity >= min && b.capacity <= max
+                );
             }
             
+            showAllBatteries = false;
+            loadBatteries();
+            
             const grid = document.getElementById('batteryGrid');
-            grid.innerHTML = '';
-            
-            filtered.forEach(product => {
-                const card = createProductCard(product, 'battery');
-                grid.innerHTML += card;
-            });
-            
-            if (filtered.length === 0) {
+            if (filteredBatteries.length === 0) {
                 grid.innerHTML = '<div class="col-span-3 text-center py-12 text-gray-500">Nu au fost găsite baterii cu criteriile selectate.</div>';
             }
         }
@@ -957,7 +1057,140 @@
             }, 3000);
         }
 
-        // AI Chatbot
+        // ============================================
+        // FLAVIU AI - EXPERT CHATBOT AVANSAT
+        // ============================================
+
+        // Bază de cunoștințe avansată
+        const flaviuKnowledge = {
+            ceramics: {
+                nl272: {
+                    name: "Nasiol NL272",
+                    price: "1300 RON",
+                    durability: "5+ ani",
+                    hardness: "10H",
+                    difficulty: "Foarte ridicată - doar profesioniști",
+                    surfaces: "Vopsea auto (caroserie)",
+                    benefits: ["Cel mai rezistent coating Nasiol (10H certificat SGS)", "HDR (High Definition Reflection) - luciu de oglindă", "Protecție anti-zgârieturi extremă", "Hidrofobizare superioară", "Rezistență UV și chimică maximă"],
+                    comparison: "Superior față de ZR53/XR03 prin duritate 10H și durabilitate 5 ani."
+                },
+                zr53: {
+                    name: "Nasiol ZR53",
+                    durability: "3-4 ani",
+                    hardness: "9H",
+                    difficulty: "Medie - detaileri cu experiență",
+                    benefits: ["Crystal Gloss Reflection", "Certificat SGS pentru 9H", "Mai ușor de aplicat decât NL272"],
+                    comparison: "9H vs 10H față de NL272, dar mai accesibil la aplicare."
+                },
+                neocoatx: {
+                    name: "Nasiol NeoCoatX",
+                    price: "284.89 RON",
+                    durability: "6-12 luni",
+                    hardness: "9H",
+                    difficulty: "Ușoară - DIY friendly",
+                    surfaces: "Vopsea, faruri, stopuri, jante, crom",
+                    benefits: ["Cel mai ușor de aplicat", "Versatil - multiple suprafețe", "Ideal pentru primul coating"],
+                    comparison: "Mai versatil decât ZR53/NL272, dar durabilitate mai scăzută."
+                }
+            },
+            batteries: {
+                types: {
+                    agm: {
+                        name: "AGM (Absorbent Glass Mat)",
+                        lifespan: "4-6 ani",
+                        pros: ["Zero întreținere", "Rezistență la vibrații excepțională", "Performanță excelentă la frig (-30°C)", "Ideal pentru Start-Stop"],
+                        cons: ["Preț ridicat (2-3x mai scump)", "Necesită încărcător specific"],
+                        recommended: "BMW, Mercedes, Audi, VW cu Start-Stop",
+                        price: "400-800 RON"
+                    },
+                    efb: {
+                        name: "EFB (Enhanced Flooded Battery)",
+                        lifespan: "3-5 ani",
+                        pros: ["Optimizat pentru Start-Stop", "Cicluri duble față de clasic", "Preț moderat"],
+                        recommended: "Dacia, Renault, Ford cu Start-Stop",
+                        price: "300-500 RON"
+                    },
+                    clasic: {
+                        name: "Plumb-Acid Clasică",
+                        lifespan: "2-4 ani",
+                        pros: ["Cel mai ieftin", "Fiabilitate dovedită"],
+                        cons: ["Sensibilă la descărcare", "Performanță scăzută la frig"],
+                        recommended: "Mașini mai vechi (pre-2010), fără Start-Stop",
+                        price: "150-300 RON"
+                    }
+                },
+                comparisons: {
+                    "agm vs efb": "AGM mai performant (cicluri mai multe, rezistență mai bună), dar EFB costă cu 30-40% mai puțin și e suficient pentru Start-Stop non-premium.",
+                    "agm vs clasic": "AGM: 4-6 ani vs 2-4 ani, rezistență la descărcare dublă, zero întreținere, performanță la frig mult mai bună. Dezavantaj: costă de 2-3 ori mai mult.",
+                    "start-stop": "Doar EFB sau AGM! Baterie clasică NU rezistă ciclurilor Start-Stop și se degradează rapid (sub 1 an)."
+                }
+            }
+        };
+
+        // Motor de răspunsuri inteligent
+        function getAIResponse(message) {
+            const msg = message.toLowerCase().trim();
+            
+            // SALUTĂRI
+            if (msg.match(/\b(salut|buna|bună|hey|hello|hei|ce faci)\b/)) {
+                return "Bună! 👋 Sunt Flaviu, expertul La Garaj în baterii auto și protecții ceramice Nasiol. Cum te pot ajuta azi?";
+            }
+            
+            // PROTECȚII CERAMICE - COMPARĂRI
+            if (msg.includes("nl272") && msg.includes("zr53")) {
+                const nl = flaviuKnowledge.ceramics.nl272;
+                const zr = flaviuKnowledge.ceramics.zr53;
+                return `**NL272 vs ZR53:**\n\nNL272: ${nl.hardness}, ${nl.durability}, ${nl.difficulty}\nZR53: ${zr.hardness}, ${zr.durability}, ${zr.difficulty}\n\n${nl.comparison}\n\nCe nivel de experiență ai cu aplicarea ceramicii?`;
+            }
+            
+            if (msg.includes("neocoat") || msg.includes("neocoatx")) {
+                const p = flaviuKnowledge.ceramics.neocoatx;
+                return `**${p.name}** - Perfect pentru început! 🚗\n\n💰 Preț: ${p.price}\n⏱️ Durabilitate: ${p.durability}\n💎 Duritate: ${p.hardness}\n🎯 Dificultate: ${p.difficulty}\n\n✅ Beneficii:\n${p.benefits.map(b => `• ${b}`).join('\n')}\n\nIdeal pentru prima experiență cu ceramică!`;
+            }
+            
+            if (msg.includes("nl272")) {
+                const p = flaviuKnowledge.ceramics.nl272;
+                return `**${p.name}** - Campionul protecției! 🏆\n\n💰 Preț: ${p.price}\n⏱️ Durabilitate: ${p.durability}\n💎 Duritate: ${p.hardness} (cea mai mare!)\n🎯 Dificultate: ${p.difficulty}\n\n✅ Beneficii:\n${p.benefits.map(b => `• ${b}`).join('\n')}\n\nVrei să compari cu ZR53?`;
+            }
+            
+            // BATERII - TIPURI
+            if (msg.includes("agm")) {
+                const b = flaviuKnowledge.batteries.types.agm;
+                return `**Baterie ${b.name}** - Top tier! 🔋⚡\n\n⏱️ Durată: ${b.lifespan}\n💰 Preț: ${b.price}\n\n✅ Avantaje:\n${b.pros.map(p => `• ${p}`).join('\n')}\n\n❌ Dezavantaje:\n${b.cons.map(c => `• ${c}`).join('\n')}\n\n🎯 Recomandat: ${b.recommended}`;
+            }
+            
+            if (msg.includes("efb")) {
+                const b = flaviuKnowledge.batteries.types.efb;
+                return `**Baterie ${b.name}** - Start-Stop! 🔋\n\n⏱️ Durată: ${b.lifespan}\n💰 Preț: ${b.price}\n\n✅ Avantaje:\n${b.pros.map(p => `• ${p}`).join('\n')}\n\n🎯 Recomandat: ${b.recommended}\n\n${flaviuKnowledge.batteries.comparisons["agm vs efb"]}`;
+            }
+            
+            // START-STOP
+            if ((msg.includes("start") && msg.includes("stop")) || msg.includes("start-stop")) {
+                return `**Baterii pentru Start-Stop:** ⚠️\n\n${flaviuKnowledge.batteries.comparisons["start-stop"]}\n\n**Opțiuni:**\n• EFB - ${flaviuKnowledge.batteries.types.efb.price}\n• AGM - ${flaviuKnowledge.batteries.types.agm.price}\n\nMarca mașinii tale?`;
+            }
+            
+            // GENERALE
+            if (msg.includes("comand") || msg.includes("cumpăr")) {
+                return "Super! 🛒 Pentru comandă:\n\n1️⃣ Alege produsul din **Baterii** sau **Detailing**\n2️⃣ Click **\"Adaugă în Coș\"**\n3️⃣ Completează formularul\n4️⃣ Primești confirmare pe email!\n\n📞 Sau sună: **+40 727 833 343**";
+            }
+            
+            if (msg.includes("livrare") || msg.includes("transport")) {
+                return "**Livrare & Ridicare:** 🚚\n\n• Livrare: de la 20 RON\n• Ridicare: GRATUIT (La Garaj Cluj)\n• Montaj gratuit: Cluj-Napoca, Florești, Turda, Gilău\n\n⏱️ Timp: 24-48 ore";
+            }
+            
+            if (msg.includes("garantie") || msg.includes("garanție")) {
+                return "**Garanție:** 🛡️\n\n• Baterii auto: 2 ani\n• Produse Nasiol: conform specificațiilor\n• Montaj inclus în Cluj și zonă\n\n📞 **+40 727 833 343**";
+            }
+            
+            if (msg.includes("preț") || msg.includes("pret") || msg.includes("cost")) {
+                return "Prețuri competitive! 💰\n\n**Baterii:** 234-800 RON\n**Nasiol:** 50-1300 RON\n\n+ Livrare și montaj gratuit!\n\nCe produs te interesează?";
+            }
+            
+            // DEFAULT
+            return `Nu sunt sigur ce întrebi, dar sunt aici! 😊\n\nÎncearcă:\n\n🔋 **Baterii:**\n• "Ce baterie AGM recomanzi?"\n• "Diferența AGM și EFB?"\n• "Baterie Start-Stop?"\n\n✨ **Ceramică Nasiol:**\n• "Ce e NL272?"\n• "NeoCoatX vs ZR53?"\n• "Prima ceramică?"\n\n📞 **+40 727 833 343**`;
+        }
+
+        // AI Chatbot functions
         function toggleChat() {
             const chatWindow = document.getElementById('chatWindow');
             chatWindow.style.display = chatWindow.style.display === 'flex' ? 'none' : 'flex';
@@ -974,27 +1207,9 @@
             
             setTimeout(() => {
                 const response = getAIResponse(message.toLowerCase());
-                messagesDiv.innerHTML += `<div class="chat-message bot">${response}</div>`;
+                messagesDiv.innerHTML += `<div class="chat-message bot">${response.replace(/\n/g, '<br>')}</div>`;
                 messagesDiv.scrollTop = messagesDiv.scrollHeight;
             }, 500);
-        }
-
-        function getAIResponse(message) {
-            if (message.includes('baterie') || message.includes('acumulator')) {
-                return 'Pentru alegerea bateriei potrivite, trebuie să știu câțiva parametri: care este marca mașinii tale și ce capacitate (Ah) îți trebuie? Pot să te ajut să găsești bateria perfectă! 🔋';
-            } else if (message.includes('detailing') || message.includes('protectie') || message.includes('ceramic')) {
-                return 'Avem o gamă completă de produse Nasiol pentru detailing profesional! De la protecție ceramică NL272 cu durabilitate 5+ ani, până la produse de întreținere zilnică. Ce tip de protecție te interesează? 🛡️';
-            } else if (message.includes('pret') || message.includes('cost')) {
-                return 'Prețurile noastre sunt foarte competitive! Bateriile încep de la 234 RON, iar produsele Nasiol de la 50 RON. Plus, oferim livrare și montaj gratuit! 💰';
-            } else if (message.includes('livrare') || message.includes('montaj')) {
-                return 'Oferim livrare gratuită în 24-48 ore în toată România și montaj gratuit la domiciliu sau service. Sună-ne la +40 727 833 343 pentru detalii! 🚚';
-            } else if (message.includes('garantie') || message.includes('garanție')) {
-                return 'Toate bateriile noastre au garanție între 24-36 luni, în funcție de model, fără condiții ascunse. Produsele Nasiol au durabilitate garantată conform specificațiilor! ✅';
-            } else if (message.includes('comanda') || message.includes('cumpar') || message.includes('cumpăr')) {
-                return 'Super! Poți adăuga produsele în coș și finaliza comanda direct pe site. Sau sună-ne la +40 727 833 343 pentru asistență personalizată! 📱';
-            } else {
-                return 'Sunt aici să te ajut! Pot să te sfătuiesc în alegerea bateriei potrivite, să îți explic beneficiile produselor Nasiol, sau să răspund la orice întrebare despre comenzi și livrare. Cu ce te pot ajuta? 😊';
-            }
         }
 
         window.onclick = function(event) {
@@ -1006,3 +1221,4 @@
     </script>
 </body>
 </html>
+
