@@ -26,16 +26,23 @@
         .hero-bg {
             background: linear-gradient(135deg, #000000 0%, #1f2937 50%, #000000 100%);
             position: relative;
-            padding: 120px 0 100px;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
+            overflow: hidden;
+        }
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
         }
         .hero-title {
             font-family: 'Playfair Display', serif;
             font-weight: 900;
             font-size: clamp(2.5rem, 6vw, 5rem);
-            line-height: 1.1;
+            line-height: 0.9;
             letter-spacing: -0.02em;
         }
         .product-card {
@@ -44,7 +51,6 @@
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
-            z-index: 1;
         }
         .product-card:hover {
             transform: translateY(-8px);
@@ -263,7 +269,7 @@
     </header>
 
     <!-- Hero Section -->
-    <section id="home" class="hero-bg text-white relative">
+    <section id="home" class="hero-bg text-white py-20 relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 <div>
@@ -288,7 +294,7 @@
     </section>
 
     <!-- Batteries Section -->
-    <section id="batteries" class="py-16 bg-white relative z-10">
+    <section id="batteries" class="py-16 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
                 <h2 class="text-4xl font-bold mb-4">
@@ -361,7 +367,7 @@
         </div>
     </section>
 
-    <!-- Detailing Section - TOATE PRODUSELE AFISATE -->
+    <!-- Detailing Section -->
     <section id="detailing" class="py-16 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
@@ -372,7 +378,7 @@
             </div>
 
             <div id="detailingGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- TOATE produsele Nasiol vor fi încărcate aici -->
+                <!-- Produse Nasiol vor fi încărcate dinamic aici -->
             </div>
         </div>
     </section>
@@ -597,7 +603,11 @@
     </div>
 
     <script>
-        // Baterii complete (86 de produse)
+        // ============================================
+        // DATABASE COMPLETĂ CU TOATE PRODUSELE
+        // ============================================
+
+        // Baterii Auto (86 produse)
         const batteryProducts = [
             {id: 1, name: "Baterie auto 50Ah Sorgeti Forte 207x175x175 420A 12V", brand: "sorgeti", capacity: 50, price: 234, originalPrice: 280, amperage: "32-54", compatibleCars: ["dacia", "renault", "ford"], image: "https://sorgeti.ro/img/p/1/0/1/0/1010-large_default.jpg"},
             {id: 2, name: "Baterie auto 40Ah Zap Plus Japan Car 187x127x227 300A 12V", brand: "zap", capacity: 40, price: 240, originalPrice: 290, amperage: "32-54", compatibleCars: ["honda", "toyota", "nissan"], image: "https://sorgeti.ro/img/p/5/6/5/565-large_default.jpg"},
@@ -634,11 +644,11 @@
             {id: 33, name: "Baterie auto 66Ah Sorgeti Estremo 242x175x190 660A 12V", brand: "sorgeti", capacity: 66, price: 372, originalPrice: 448, amperage: "55-66", compatibleCars: ["volkswagen", "audi"], image: "https://sorgeti.ro/img/p/1/1/0/3/1103-large_default.jpg"},
             {id: 34, name: "Baterie auto 78Ah Sorgeti Argento 278x175x190 720A 12V", brand: "sorgeti", capacity: 78, price: 375, originalPrice: 430, amperage: "67-80", compatibleCars: ["bmw", "mercedes", "audi"], image: "https://sorgeti.ro/img/p/1/1/0/2/1102-large_default.jpg"},
             {id: 35, name: "Baterie auto 80Ah Sorgeti Forte 278x175x190 720A 12V", brand: "sorgeti", capacity: 80, price: 380, originalPrice: 457, amperage: "67-80", compatibleCars: ["bmw", "mercedes", "audi"], image: "https://sorgeti.ro/img/p/1/0/1/0/1010-large_default.jpg"},
-            {id: 36, name: "Baterie auto 65Ah Sorgeti Argento EFB Start-Stop 242x175x190 600A 12V", brand: "sorgeti", capacity: 65, price: 385, originalPrice: 440, amperage: "55-66", compatibleCars: ["bmw", "audi", "mercedes"], image: "https://sorgeti.ro/img/p/1/1/0/2/1102-large_default.jpg"},
-            {id: 37, name: "Baterie auto 55Ah Midac Itineris JIS EFB Start-Stop 237x128x220 460A 12V", brand: "midac", capacity: 55, price: 388, originalPrice: 448, amperage: "55-66", compatibleCars: ["honda", "toyota", "mazda", "nissan"], image: "https://sorgeti.ro/img/p/5/5/j/55j-large_default.jpg"},
+            {id: 36, name: "Baterie auto 65Ah Sorgeti Argento EFB Start-Stop 242x175x190 600A 12V", brand: "sorgeti", capacity: 65, price: 385, originalPrice: 440, amperage: "55-66", compatibleCars: ["volkswagen", "audi", "bmw"], image: "https://sorgeti.ro/img/p/1/1/0/2/1102-large_default.jpg"},
+            {id: 37, name: "Baterie auto 55Ah Midac Itineris JIS EFB Start-Stop 237x128x220 460A 12V", brand: "midac", capacity: 55, price: 388, originalPrice: 448, amperage: "55-66", compatibleCars: ["honda", "toyota", "nissan"], image: "https://sorgeti.ro/img/p/5/5/j/55j-large_default.jpg"},
             {id: 38, name: "Baterie auto 80Ah Sorgeti Argento 278x175x190 780A 12V", brand: "sorgeti", capacity: 80, price: 388, originalPrice: 432, amperage: "67-80", compatibleCars: ["bmw", "mercedes", "audi"], image: "https://sorgeti.ro/img/p/1/1/0/2/1102-large_default.jpg"},
             {id: 39, name: "Baterie auto 75Ah Sorgeti Estremo 278x175x175 720A 12V", brand: "sorgeti", capacity: 75, price: 390, originalPrice: 470, amperage: "67-80", compatibleCars: ["bmw", "mercedes", "audi"], image: "https://sorgeti.ro/img/p/1/1/0/3/1103-large_default.jpg"},
-            {id: 40, name: "Baterie auto 66Ah Sorgeti Supremo EFB Start-Stop 242x175x190 650A 12V", brand: "sorgeti", capacity: 66, price: 391, originalPrice: 470, amperage: "55-66", compatibleCars: ["bmw", "audi", "mercedes"], image: "https://sorgeti.ro/img/p/1/1/0/4/1104-large_default.jpg"},
+            {id: 40, name: "Baterie auto 66Ah Sorgeti Supremo EFB Start-Stop 242x175x190 650A 12V", brand: "sorgeti", capacity: 66, price: 391, originalPrice: 470, amperage: "55-66", compatibleCars: ["volkswagen", "audi", "bmw"], image: "https://sorgeti.ro/img/p/1/1/0/4/1104-large_default.jpg"},
             {id: 41, name: "Baterie auto 66Ah Sorgeti Argento EFB Start-Stop 242x175x190 650A 12V", brand: "sorgeti", capacity: 66, price: 391, originalPrice: 441, amperage: "55-66", compatibleCars: ["volkswagen", "audi"], image: "https://sorgeti.ro/img/p/1/1/0/2/1102-large_default.jpg"},
             {id: 42, name: "Baterie auto 80Ah ZAP Silver Premium 278x175x190 760A 12V", brand: "zap", capacity: 80, price: 395, originalPrice: 475, amperage: "67-80", compatibleCars: ["bmw", "mercedes", "audi"], image: "https://sorgeti.ro/img/p/5/8/0/580-large_default.jpg"},
             {id: 43, name: "Baterie auto 77Ah Sorgeti Estremo 278x175x175 760A 12V", brand: "sorgeti", capacity: 77, price: 407, originalPrice: 477, amperage: "67-80", compatibleCars: ["bmw", "mercedes", "audi"], image: "https://sorgeti.ro/img/p/1/1/0/3/1103-large_default.jpg"},
@@ -687,34 +697,35 @@
             {id: 86, name: "Baterie auto 112Ah Exide AGM Start-Stop EA1120 392x175x190 920A 12V", brand: "exide", capacity: 112, price: 770, originalPrice: 770, amperage: "82-110", compatibleCars: ["bmw", "mercedes", "audi"], image: "https://sorgeti.ro/img/p/e/x/ex3-large_default.jpg"}
         ];
 
-        // TOATE produsele Nasiol (24 de produse) - AFISATE INTEGRAL
+        // Produse Nasiol Detailing (24 produse cu PREȚURI CORECTE)
         const detailingProducts = [
-            { id: 1000, name: "Nasiol PPFGuard", description: "Protecție ceramică profesională pentru folii PPF - Rezistență UV și hidrofobicitate superioară", price: 290, originalPrice: 511.4, category: "nasiol", brand: "Nasiol", image: "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop" },
-            { id: 1001, name: "Nasiol Leather Boost", description: "Protecție nano-ceramică pentru piele - Hidratare și protecție UV", price: 170, originalPrice: 272.57, category: "nasiol", brand: "Nasiol", image: "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop" },
-            { id: 1002, name: "Nasiol Trim Coat", description: "Restaurare și protecție pentru plasticele exterioare - Aspect nou și protecție UV", price: 140, originalPrice: 272.57, category: "nasiol", brand: "Nasiol", image: "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop" },
-            { id: 1003, name: "Nasiol Headlight Restorer Kit", description: "Kit complet pentru restaurarea farurilor - Îndepărtează opacitatea și protejează", price: 65, originalPrice: 150.0, category: "nasiol", brand: "Nasiol", image: "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop" },
-            { id: 1004, name: "Nasiol Parfum New Car Smell", description: "Parfum auto profesional - Miros de mașină nouă autentic", price: 40, originalPrice: 50.87, category: "nasiol", brand: "Nasiol", image: "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop" },
-            { id: 1005, name: "Nasiol Parfum Mango", description: "Parfum auto exotic - Aromă de mango de lungă durată", price: 40, originalPrice: 50.87, category: "nasiol", brand: "Nasiol", image: "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop" },
-            { id: 1006, name: "Mănușă de Spălat Mașina Premium", description: "Mănușă premium pentru spălare - Material moale și absorbant", price: 45, originalPrice: 53.55, category: "nasiol", brand: "Nasiol", image: "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop" },
-            { id: 1007, name: "Set Lavete Microfibre (10 buc)", description: "Set 10 lavete microfibre profesionale - Pentru curățare fără zgârieturi", price: 65, originalPrice: 65, category: "nasiol", brand: "Nasiol", image: "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop" },
-            { id: 1008, name: "Prosop Auto Premium", description: "Prosop absorbant de înaltă calitate - Uscare rapidă fără urme", price: 60, originalPrice: 73.0, category: "nasiol", brand: "Nasiol", image: "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop" },
-            { id: 1009, name: "Nasiol Rapid Shine", description: "Spray quick detailer - Strălucire instantanee și protecție rapidă", price: 80, originalPrice: 136.02, category: "nasiol", brand: "Nasiol", image: "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop" },
-            { id: 1010, name: "Nasiol NeoCoat X", description: "Protecție ceramică semi-permanentă - Durabilitate până la 6 luni", price: 175, originalPrice: 284.89, category: "nasiol", brand: "Nasiol", image: "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop" },
-            { id: 1011, name: "Nasiol Temporoad", description: "Protecție temporară pentru vopsea - Ideal pentru drumuri lungi", price: 60, originalPrice: 97.46, category: "nasiol", brand: "Nasiol", image: "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop" },
-            { id: 1012, name: "Nasiol Glass Shield Spray", description: "Protecție hidrofobă pentru geamuri - Vizibilitate perfectă la ploaie", price: 80, originalPrice: 104.42, category: "nasiol", brand: "Nasiol", image: "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop" },
-            { id: 1013, name: "Nasiol Glass Shield Șervețele", description: "Șervețele impregnate pentru geamuri - Aplicare rapidă și ușoară", price: 40, originalPrice: 65.87, category: "nasiol", brand: "Nasiol", image: "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop" },
-            { id: 1014, name: "Nasiol Detailer Shine", description: "Spray pentru finisaj - Strălucire și protecție între spălări", price: 75, originalPrice: 120.49, category: "nasiol", brand: "Nasiol", image: "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop" },
-            { id: 1015, name: "Nasiol Universal Precleaner", description: "Curățător universal pre-aplicare - Pregătește suprafața pentru coating", price: 45, originalPrice: 75.0, category: "nasiol", brand: "Nasiol", image: "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop" },
-            { id: 1016, name: "Nasiol Magic APC", description: "Curățător universal concentrat - Pentru toate suprafețele", price: 40, originalPrice: 97.46, category: "nasiol", brand: "Nasiol", image: "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop" },
-            { id: 1017, name: "Nasiol MetalCoat F2", description: "Protecție ceramică pentru suprafețe metalice - Anti-coroziune și strălucire", price: 150, originalPrice: 218.48, category: "nasiol", brand: "Nasiol", image: "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop" },
-            { id: 1018, name: "Nasiol Cabin Care", description: "Protecție și curățare pentru interior - Aspect proaspăt și protecție UV", price: 95, originalPrice: 163.33, category: "nasiol", brand: "Nasiol", image: "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop" },
-            { id: 1019, name: "Nasiol Nano Seat Protect", description: "Protecție nano pentru scaune - Repelent la lichide și pete", price: 110, originalPrice: 175.11, category: "nasiol", brand: "Nasiol", image: "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop" },
-            { id: 1020, name: "Nasiol Leather Cleaner", description: "Curățător special pentru piele - Formula blândă și eficientă", price: 45, originalPrice: 65.87, category: "nasiol", brand: "Nasiol", image: "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop" },
-            { id: 1021, name: "Nasiol Team APC 500ml Concentrat", description: "Curățător universal concentrat profesional - Eficiență maximă", price: 65, originalPrice: 97.46, category: "nasiol", brand: "Nasiol", image: "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop" },
-            { id: 1022, name: "Nasiol Cleanion 500ml", description: "Soluție de curățare avansată - Pentru toate tipurile de suprafețe", price: 50, originalPrice: 76.04, category: "nasiol", brand: "Nasiol", image: "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop" },
-            { id: 1023, name: "Nasiol Cabin Shine", description: "Spray pentru finisaj interior - Strălucire și protecție pentru bord", price: 60, originalPrice: 87.82, category: "nasiol", brand: "Nasiol", image: "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop" }
+            {id: 1000, name: "Nasiol PPFGuard", price: 499.90, originalPrice: 520, brand: "Nasiol", image: "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop", description: "Protecție ceramică profesională pentru folii PPF - Rezistență UV și hidrofobicitate superioară"},
+            {id: 1001, name: "Nasiol Leather Boost", price: 269.90, originalPrice: 349.90, brand: "Nasiol", image: "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop", description: "Protecție nano-ceramică pentru piele - Hidratare și protecție UV"},
+            {id: 1002, name: "Nasiol Trim Coat", price: 270, originalPrice: 340, brand: "Nasiol", image: "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop", description: "Restaurare și protecție pentru plasticele exterioare - Aspect nou și protecție UV"},
+            {id: 1003, name: "Nasiol Headlight Restorer Kit", price: 130, originalPrice: 200, brand: "Nasiol", image: "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop", description: "Kit de restaurare a farurilor cu protecție ceramică"},
+            {id: 1004, name: "Nasiol Parfum New Car Smell", price: 50, originalPrice: 59.90, brand: "Nasiol", image: "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop", description: "Parfum auto profesional - Miros de mașină nouă autentic"},
+            {id: 1005, name: "Nasiol Parfum Mango", price: 50, originalPrice: 59.90, brand: "Nasiol", image: "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop", description: "Parfum auto exotic - Aromă de mango de lungă durată"},
+            {id: 1006, name: "Mănușă de Spălat Mașina Premium", price: 52, originalPrice: 69.90, brand: "Nasiol", image: "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop", description: "Mănușă premium pentru spălare - Material moale și absorbant"},
+            {id: 1007, name: "Set Lavete Microfibre (10 buc)", price: 120, originalPrice: 150, brand: "Nasiol", image: "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop", description: "Set 10 lavete microfibre profesionale - Pentru curățare fără zgârieturi"},
+            {id: 1008, name: "Prosop Auto Premium", price: 70, originalPrice: 98.90, brand: "Nasiol", image: "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop", description: "Prosop absorbant de înaltă calitate - Uscare rapidă fără urme"},
+            {id: 1009, name: "Nasiol Rapid Shine", price: 135, originalPrice: 150, brand: "Nasiol", image: "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop", description: "Spray quick detailer - Strălucire instantanee și protecție rapidă"},
+            {id: 1010, name: "Nasiol NeoCoat X", price: 284.89, originalPrice: 350, brand: "Nasiol", image: "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop", description: "Protecție ceramică semi-permanentă - Durabilitate până la 6 luni"},
+            {id: 1011, name: "Nasiol Temporoad", price: 95, originalPrice: 140, brand: "Nasiol", image: "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop", description: "Protecție temporară pentru vopsea - Ideal pentru drumuri lungi"},
+            {id: 1012, name: "Nasiol Glass Shield Spray", price: 105, originalPrice: 139.90, brand: "Nasiol", image: "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop", description: "Protecție hidrofobă pentru geamuri - Vizibilitate perfectă la ploaie"},
+            {id: 1013, name: "Nasiol Glass Shield Șervețele", price: 60, originalPrice: 85, brand: "Nasiol", image: "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop", description: "Șervețele impregnate pentru geamuri - Aplicare rapidă și ușoară"},
+            {id: 1014, name: "Nasiol Detailer Shine", price: 120, originalPrice: 148.60, brand: "Nasiol", image: "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop", description: "Spray pentru finisaj - Strălucire și protecție între spălări"},
+            {id: 1015, name: "Nasiol Universal Precleaner", price: 75, originalPrice: 90, brand: "Nasiol", image: "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop", description: "Curățător universal pre-aplicare - Pregătește suprafața pentru coating"},
+            {id: 1016, name: "Nasiol Magic APC", price: 95, originalPrice: 130, brand: "Nasiol", image: "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop", description: "Curățător universal concentrat - Pentru toate suprafețele"},
+            {id: 1017, name: "Nasiol MetalCoat F2", price: 215.99, originalPrice: 267.90, brand: "Nasiol", image: "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop", description: "Protecție ceramică pentru suprafețe metalice - Anti-coroziune și strălucire"},
+            {id: 1018, name: "Nasiol Cabin Care", price: 165, originalPrice: 200, brand: "Nasiol", image: "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop", description: "Protecție și curățare pentru interior - Aspect proaspăt și protecție UV"},
+            {id: 1019, name: "Nasiol Nano Seat Protect", price: 175, originalPrice: 225, brand: "Nasiol", image: "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop", description: "Protecție nano pentru scaune - Repelent la lichide și pete"},
+            {id: 1020, name: "Nasiol Leather Cleaner", price: 65, originalPrice: 85, brand: "Nasiol", image: "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop", description: "Curățător special pentru piele - Formula blândă și eficientă"},
+            {id: 1021, name: "Nasiol Team APC 500ml Concentrat", price: 95, originalPrice: 121, brand: "Nasiol", image: "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop", description: "Curățător universal concentrat profesional - Eficiență maximă"},
+            {id: 1022, name: "Nasiol Cleanion 500ml", price: 75, originalPrice: 98, brand: "Nasiol", image: "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop", description: "Soluție de curățare avansată - Pentru toate tipurile de suprafețe"},
+            {id: 1023, name: "Nasiol Cabin Shine", price: 85, originalPrice: 115, brand: "Nasiol", image: "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop", description: "Spray pentru finisaj interior - Strălucire și protecție pentru bord"}
         ];
 
+        // State management
         let showAllBatteries = false;
         let filteredBatteries = [...batteryProducts];
         let cart = [];
@@ -748,19 +759,20 @@
                 grid.innerHTML += card;
             });
             
+            // Update button text
             const btnText = document.getElementById('btnText');
             const showMoreBtn = document.getElementById('showMoreBtn');
             if (btnText && showMoreBtn) {
                 if (showAllBatteries) {
                     btnText.textContent = 'Arată Mai Puține';
-                    showMoreBtn.innerHTML = '<i class="fas fa-minus-circle mr-2"></i><span id="btnText">Arată Mai Puține</span>';
+                    showMoreBtn.innerHTML = '<i class="fas fa-minus-circle mr-2"></i>Vezi Mai Puține';
                 } else {
                     btnText.textContent = `Vezi Toate Bateriile (${filteredBatteries.length})`;
-                    showMoreBtn.innerHTML = '<i class="fas fa-plus-circle mr-2"></i><span id="btnText">Vezi Toate Bateriile (' + filteredBatteries.length + ')</span>';
+                    showMoreBtn.innerHTML = '<i class="fas fa-plus-circle mr-2"></i>Vezi Toate Bateriile';
                 }
             }
         }
-
+        
         function toggleShowAll() {
             showAllBatteries = !showAllBatteries;
             loadBatteries();
@@ -771,29 +783,28 @@
             const grid = document.getElementById('detailingGrid');
             grid.innerHTML = '';
             
-            // AFISAM TOATE PRODUSELE Nasiol (24 de produse)
             detailingProducts.forEach(product => {
-                const card = createProductCard(product, 'detailing');
-                grid.innerHTML += card;
+                grid.innerHTML += createProductCard(product, 'detailing');
             });
         }
 
         function createProductCard(product, type) {
             const discount = product.originalPrice > product.price ? Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100) : 0;
-            const imageUrl = product.image || `https://images.unsplash.com/photo-${type === 'battery' ? '1592833167005-97b9d26a8836' : '1583394293214-4b5a2a88b49f'}?w=400&h=300&fit=crop`;
+            const displayPrice = Math.round(product.price);
+            const displayOriginal = Math.round(product.originalPrice);
             
             return `
                 <div class="product-card rounded-xl p-6">
                     ${discount > 0 ? `<div class="sale-badge absolute top-2 right-2 px-2 py-1 rounded-full text-xs">-${discount}%</div>` : ''}
                     <div class="mb-4 h-40 bg-gray-100 rounded-lg overflow-hidden">
-                        <img src="${imageUrl}" alt="${product.name}" class="w-full h-full object-cover" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\\'flex items-center justify-center h-full\\'><i class=\\'fas fa-${type === 'battery' ? 'battery-full' : 'shield-alt'} text-6xl text-gray-400\\'></i></div>'">
+                        <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\\'flex items-center justify-center h-full\\'><i class=\\'fas fa-${type === 'battery' ? 'battery-full' : 'shield-alt'} text-6xl text-gray-400\\'></i></div>'">
                     </div>
                     <h3 class="text-lg font-bold text-black mb-2">${product.name}</h3>
                     <p class="text-gray-600 text-sm mb-4">${product.description}</p>
                     <div class="flex items-center justify-between mb-4">
                         <div class="flex items-center space-x-2">
-                            <span class="price-tag px-3 py-1 rounded-lg text-sm">${product.price} RON</span>
-                            ${product.originalPrice > product.price ? `<span class="old-price text-sm">${product.originalPrice} RON</span>` : ''}
+                            <span class="price-tag px-3 py-1 rounded-lg text-sm">${displayPrice} RON</span>
+                            ${product.originalPrice > product.price ? `<span class="old-price text-sm">${displayOriginal} RON</span>` : ''}
                         </div>
                     </div>
                     <div class="flex space-x-2">
@@ -843,6 +854,7 @@
             }
         }
 
+        // Funcții Coș
         function addToCart(productId) {
             const product = allProducts.find(p => p.id === productId);
             if (!product) return;
@@ -892,14 +904,14 @@
             cartItems.innerHTML = '';
             
             cart.forEach(item => {
-                const itemTotal = item.price * item.quantity;
+                const itemTotal = Math.round(item.price * item.quantity);
                 total += itemTotal;
                 
                 cartItems.innerHTML += `
                     <div class="flex items-center justify-between p-4 border border-gray-200 rounded-lg">
                         <div>
                             <h4 class="font-semibold">${item.name}</h4>
-                            <p class="text-gray-500 text-sm">${item.price} RON x ${item.quantity}</p>
+                            <p class="text-gray-500 text-sm">${Math.round(item.price)} RON x ${item.quantity}</p>
                         </div>
                         <div class="flex items-center space-x-4">
                             <span class="font-bold">${itemTotal} RON</span>
@@ -937,13 +949,6 @@
             updateOrderSummary();
         }
 
-        document.addEventListener('DOMContentLoaded', function() {
-            const paymentMethodSelect = document.getElementById('paymentMethod');
-            if (paymentMethodSelect) {
-                paymentMethodSelect.addEventListener('change', updateOrderSummary);
-            }
-        });
-        
         function updateOrderSummary() {
             const orderSummary = document.getElementById('orderSummary');
             const orderTotal = document.getElementById('orderTotal');
@@ -952,7 +957,7 @@
             let summaryHTML = '';
             
             cart.forEach(item => {
-                const itemTotal = item.price * item.quantity;
+                const itemTotal = Math.round(item.price * item.quantity);
                 subtotal += itemTotal;
                 summaryHTML += `<div class="flex justify-between mb-2">
                     <span>${item.name} x${item.quantity}</span>
@@ -965,7 +970,7 @@
             const total = subtotal + shippingCost;
             
             const shippingText = paymentMethodValue === 'pickup' ? 
-                '<strong>Transport:</strong> 0 RON (ridicare personală din Cluj)' : 
+                '<strong>Transport:</strong> 0 RON (ridicare personală)' : 
                 `<strong>Transport:</strong> ${shippingCost} RON`;
             summaryHTML += `<div class="border-t pt-2 mt-2">${shippingText}</div>`;
             orderSummary.innerHTML = summaryHTML;
@@ -981,12 +986,17 @@
             const address = document.getElementById('customerAddress').value;
             const paymentMethod = document.getElementById('paymentMethod').value;
             
+            if (!name || !email || !phone || !address) {
+                alert('❌ Te rugăm să completezi toate câmpurile obligatorii!');
+                return;
+            }
+            
             let productList = '';
             let subtotal = 0;
             cart.forEach(item => {
-                const itemTotal = item.price * item.quantity;
+                const itemTotal = Math.round(item.price * item.quantity);
                 subtotal += itemTotal;
-                productList += `${item.name} x${item.quantity} - ${item.price} RON = ${itemTotal} RON\n`;
+                productList += `${item.name} x${item.quantity} - ${Math.round(item.price)} RON = ${itemTotal} RON\n`;
             });
             
             const shippingCost = paymentMethod === 'pickup' ? 0 : 20;
@@ -1011,20 +1021,11 @@
                 order_date: new Date().toLocaleString('ro-RO')
             };
             
-            console.log('Sending order...', templateParams);
-            
-            if (!name || !email || !phone || !address) {
-                alert('❌ Te rugăm să completezi toate câmpurile obligatorii!');
-                return;
-            }
-            
             emailjs.send("lagaraj_cjjgybi", "furniz_yifbk8e", templateParams)
             .then((response) => {
-                console.log('Email 1 (furnizor) trimis!', response.status, response.text);
                 return emailjs.send("lagaraj_cjjgybi", "client_5g2sp14", templateParams);
             })
             .then((response) => {
-                console.log('Email 2 (către client) trimis!', response.status, response.text);
                 alert(`✅ Comanda a fost trimisă cu succes!\n\nÎți mulțumim, ${name}!\nVei fi contactat în maxim 24h la numărul ${phone}.\n\nTotal: ${total} RON\n\nAi primit și un email de confirmare la ${email}.`);
                 document.getElementById('orderFormModal').style.display = 'none';
                 document.getElementById('orderForm').reset();
