@@ -26,23 +26,16 @@
         .hero-bg {
             background: linear-gradient(135deg, #000000 0%, #1f2937 50%, #000000 100%);
             position: relative;
-            overflow: hidden;
-        }
-        .hero-bg::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
-            opacity: 0.3;
+            padding: 120px 0 100px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
         }
         .hero-title {
             font-family: 'Playfair Display', serif;
             font-weight: 900;
             font-size: clamp(2.5rem, 6vw, 5rem);
-            line-height: 0.9;
+            line-height: 1.1;
             letter-spacing: -0.02em;
         }
         .product-card {
@@ -51,6 +44,7 @@
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
+            z-index: 1;
         }
         .product-card:hover {
             transform: translateY(-8px);
@@ -269,7 +263,7 @@
     </header>
 
     <!-- Hero Section -->
-    <section id="home" class="hero-bg text-white py-20 relative">
+    <section id="home" class="hero-bg text-white relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 <div>
@@ -294,7 +288,7 @@
     </section>
 
     <!-- Batteries Section -->
-    <section id="batteries" class="py-16 bg-white">
+    <section id="batteries" class="py-16 bg-white relative z-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
                 <h2 class="text-4xl font-bold mb-4">
@@ -367,7 +361,7 @@
         </div>
     </section>
 
-    <!-- Detailing Section -->
+    <!-- Detailing Section - TOATE PRODUSELE AFISATE -->
     <section id="detailing" class="py-16 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
@@ -378,606 +372,7 @@
             </div>
 
             <div id="detailingGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Product 1: Ppfguard -->
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 relative">
-                    <div class="absolute top-4 right-4 bg-red-600 text-white px-3 py-1 rounded-full text-sm font-bold z-10">-43%</div>
-                    <div class="h-48 bg-gray-100 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop" alt="Ppfguard" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">Ppfguard</h3>
-                        <p class="text-gray-600 text-sm mb-4">Produse profesionale de protecție ceramică și detailing auto Nasiol</p>
-                        <div class="flex items-center justify-between mb-4">
-                            <div class="flex flex-col">
-                                <span class="text-2xl font-bold text-black">290 RON</span>
-                                <span class="text-sm text-gray-500 line-through">511.40 RON</span>
-                            </div>
-                        </div>
-                        <div class="flex space-x-2">
-                            <button class="flex-1 bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition-colors">
-                                <i class="fas fa-cart-plus mr-2"></i>Adaugă în Coș
-                            </button>
-                            <button class="flex-1 bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors">
-                                <i class="fas fa-shopping-cart mr-2"></i>Cumpără Acum
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <!-- Product 2: Leather Boost -->
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 relative">
-                    <div class="absolute top-4 right-4 bg-red-600 text-white px-3 py-1 rounded-full text-sm font-bold z-10">-38%</div>
-                    <div class="h-48 bg-gray-100 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop" alt="Leather Boost" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">Leather Boost</h3>
-                        <p class="text-gray-600 text-sm mb-4">Produse profesionale de protecție ceramică și detailing auto Nasiol</p>
-                        <div class="flex items-center justify-between mb-4">
-                            <div class="flex flex-col">
-                                <span class="text-2xl font-bold text-black">170 RON</span>
-                                <span class="text-sm text-gray-500 line-through">272.57 RON</span>
-                            </div>
-                        </div>
-                        <div class="flex space-x-2">
-                            <button class="flex-1 bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition-colors">
-                                <i class="fas fa-cart-plus mr-2"></i>Adaugă în Coș
-                            </button>
-                            <button class="flex-1 bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors">
-                                <i class="fas fa-shopping-cart mr-2"></i>Cumpără Acum
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <!-- Product 3: Trim Coat -->
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 relative">
-                    <div class="absolute top-4 right-4 bg-red-600 text-white px-3 py-1 rounded-full text-sm font-bold z-10">-49%</div>
-                    <div class="h-48 bg-gray-100 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop" alt="Trim Coat" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">Trim Coat</h3>
-                        <p class="text-gray-600 text-sm mb-4">Produse profesionale de protecție ceramică și detailing auto Nasiol</p>
-                        <div class="flex items-center justify-between mb-4">
-                            <div class="flex flex-col">
-                                <span class="text-2xl font-bold text-black">140 RON</span>
-                                <span class="text-sm text-gray-500 line-through">272.57 RON</span>
-                            </div>
-                        </div>
-                        <div class="flex space-x-2">
-                            <button class="flex-1 bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition-colors">
-                                <i class="fas fa-cart-plus mr-2"></i>Adaugă în Coș
-                            </button>
-                            <button class="flex-1 bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors">
-                                <i class="fas fa-shopping-cart mr-2"></i>Cumpără Acum
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <!-- Product 4: Headlight Restorer Kit -->
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 relative">
-                    <div class="absolute top-4 right-4 bg-red-600 text-white px-3 py-1 rounded-full text-sm font-bold z-10">-57%</div>
-                    <div class="h-48 bg-gray-100 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop" alt="Headlight Restorer Kit" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">Headlight Restorer Kit</h3>
-                        <p class="text-gray-600 text-sm mb-4">Produse profesionale de protecție ceramică și detailing auto Nasiol</p>
-                        <div class="flex items-center justify-between mb-4">
-                            <div class="flex flex-col">
-                                <span class="text-2xl font-bold text-black">65 RON</span>
-                                <span class="text-sm text-gray-500 line-through">150.00 RON</span>
-                            </div>
-                        </div>
-                        <div class="flex space-x-2">
-                            <button class="flex-1 bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition-colors">
-                                <i class="fas fa-cart-plus mr-2"></i>Adaugă în Coș
-                            </button>
-                            <button class="flex-1 bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors">
-                                <i class="fas fa-shopping-cart mr-2"></i>Cumpără Acum
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <!-- Product 5: Parfum New Car Smell -->
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 relative">
-                    <div class="absolute top-4 right-4 bg-red-600 text-white px-3 py-1 rounded-full text-sm font-bold z-10">-21%</div>
-                    <div class="h-48 bg-gray-100 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop" alt="Parfum New Car Smell" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">Parfum New Car Smell</h3>
-                        <p class="text-gray-600 text-sm mb-4">Produse profesionale de protecție ceramică și detailing auto Nasiol</p>
-                        <div class="flex items-center justify-between mb-4">
-                            <div class="flex flex-col">
-                                <span class="text-2xl font-bold text-black">40 RON</span>
-                                <span class="text-sm text-gray-500 line-through">50.87 RON</span>
-                            </div>
-                        </div>
-                        <div class="flex space-x-2">
-                            <button class="flex-1 bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition-colors">
-                                <i class="fas fa-cart-plus mr-2"></i>Adaugă în Coș
-                            </button>
-                            <button class="flex-1 bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors">
-                                <i class="fas fa-shopping-cart mr-2"></i>Cumpără Acum
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <!-- Product 6: Parfum Mango -->
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 relative">
-                    <div class="absolute top-4 right-4 bg-red-600 text-white px-3 py-1 rounded-full text-sm font-bold z-10">-21%</div>
-                    <div class="h-48 bg-gray-100 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop" alt="Parfum Mango" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">Parfum Mango</h3>
-                        <p class="text-gray-600 text-sm mb-4">Produse profesionale de protecție ceramică și detailing auto Nasiol</p>
-                        <div class="flex items-center justify-between mb-4">
-                            <div class="flex flex-col">
-                                <span class="text-2xl font-bold text-black">40 RON</span>
-                                <span class="text-sm text-gray-500 line-through">50.87 RON</span>
-                            </div>
-                        </div>
-                        <div class="flex space-x-2">
-                            <button class="flex-1 bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition-colors">
-                                <i class="fas fa-cart-plus mr-2"></i>Adaugă în Coș
-                            </button>
-                            <button class="flex-1 bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors">
-                                <i class="fas fa-shopping-cart mr-2"></i>Cumpără Acum
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <!-- Product 7: Manusa De Spalat Masina -->
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 relative">
-                    <div class="absolute top-4 right-4 bg-red-600 text-white px-3 py-1 rounded-full text-sm font-bold z-10">-16%</div>
-                    <div class="h-48 bg-gray-100 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop" alt="Manusa De Spalat Masina" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">Manusa De Spalat Masina</h3>
-                        <p class="text-gray-600 text-sm mb-4">Produse profesionale de protecție ceramică și detailing auto Nasiol</p>
-                        <div class="flex items-center justify-between mb-4">
-                            <div class="flex flex-col">
-                                <span class="text-2xl font-bold text-black">45 RON</span>
-                                <span class="text-sm text-gray-500 line-through">53.55 RON</span>
-                            </div>
-                        </div>
-                        <div class="flex space-x-2">
-                            <button class="flex-1 bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition-colors">
-                                <i class="fas fa-cart-plus mr-2"></i>Adaugă în Coș
-                            </button>
-                            <button class="flex-1 bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors">
-                                <i class="fas fa-shopping-cart mr-2"></i>Cumpără Acum
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <!-- Product 8: Lavete 10 Buc -->
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 relative">
-                    
-                    <div class="h-48 bg-gray-100 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop" alt="Lavete 10 Buc" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">Lavete 10 Buc</h3>
-                        <p class="text-gray-600 text-sm mb-4">Produse profesionale de protecție ceramică și detailing auto Nasiol</p>
-                        <div class="flex items-center justify-between mb-4">
-                            <div class="flex flex-col">
-                                <span class="text-2xl font-bold text-black">65 RON</span>
-                                
-                            </div>
-                        </div>
-                        <div class="flex space-x-2">
-                            <button class="flex-1 bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition-colors">
-                                <i class="fas fa-cart-plus mr-2"></i>Adaugă în Coș
-                            </button>
-                            <button class="flex-1 bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors">
-                                <i class="fas fa-shopping-cart mr-2"></i>Cumpără Acum
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <!-- Product 9: Prosop -->
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 relative">
-                    <div class="absolute top-4 right-4 bg-red-600 text-white px-3 py-1 rounded-full text-sm font-bold z-10">-18%</div>
-                    <div class="h-48 bg-gray-100 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop" alt="Prosop" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">Prosop</h3>
-                        <p class="text-gray-600 text-sm mb-4">Produse profesionale de protecție ceramică și detailing auto Nasiol</p>
-                        <div class="flex items-center justify-between mb-4">
-                            <div class="flex flex-col">
-                                <span class="text-2xl font-bold text-black">60 RON</span>
-                                <span class="text-sm text-gray-500 line-through">73.00 RON</span>
-                            </div>
-                        </div>
-                        <div class="flex space-x-2">
-                            <button class="flex-1 bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition-colors">
-                                <i class="fas fa-cart-plus mr-2"></i>Adaugă în Coș
-                            </button>
-                            <button class="flex-1 bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors">
-                                <i class="fas fa-shopping-cart mr-2"></i>Cumpără Acum
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <!-- Product 10: Rapid Shine -->
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 relative">
-                    <div class="absolute top-4 right-4 bg-red-600 text-white px-3 py-1 rounded-full text-sm font-bold z-10">-41%</div>
-                    <div class="h-48 bg-gray-100 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop" alt="Rapid Shine" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">Rapid Shine</h3>
-                        <p class="text-gray-600 text-sm mb-4">Produse profesionale de protecție ceramică și detailing auto Nasiol</p>
-                        <div class="flex items-center justify-between mb-4">
-                            <div class="flex flex-col">
-                                <span class="text-2xl font-bold text-black">80 RON</span>
-                                <span class="text-sm text-gray-500 line-through">136.02 RON</span>
-                            </div>
-                        </div>
-                        <div class="flex space-x-2">
-                            <button class="flex-1 bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition-colors">
-                                <i class="fas fa-cart-plus mr-2"></i>Adaugă în Coș
-                            </button>
-                            <button class="flex-1 bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors">
-                                <i class="fas fa-shopping-cart mr-2"></i>Cumpără Acum
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <!-- Product 11: Neocoat X -->
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 relative">
-                    <div class="absolute top-4 right-4 bg-red-600 text-white px-3 py-1 rounded-full text-sm font-bold z-10">-39%</div>
-                    <div class="h-48 bg-gray-100 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop" alt="Neocoat X" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">Neocoat X</h3>
-                        <p class="text-gray-600 text-sm mb-4">Produse profesionale de protecție ceramică și detailing auto Nasiol</p>
-                        <div class="flex items-center justify-between mb-4">
-                            <div class="flex flex-col">
-                                <span class="text-2xl font-bold text-black">175 RON</span>
-                                <span class="text-sm text-gray-500 line-through">284.89 RON</span>
-                            </div>
-                        </div>
-                        <div class="flex space-x-2">
-                            <button class="flex-1 bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition-colors">
-                                <i class="fas fa-cart-plus mr-2"></i>Adaugă în Coș
-                            </button>
-                            <button class="flex-1 bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors">
-                                <i class="fas fa-shopping-cart mr-2"></i>Cumpără Acum
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <!-- Product 12: Temporoad -->
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 relative">
-                    <div class="absolute top-4 right-4 bg-red-600 text-white px-3 py-1 rounded-full text-sm font-bold z-10">-38%</div>
-                    <div class="h-48 bg-gray-100 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop" alt="Temporoad" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">Temporoad</h3>
-                        <p class="text-gray-600 text-sm mb-4">Produse profesionale de protecție ceramică și detailing auto Nasiol</p>
-                        <div class="flex items-center justify-between mb-4">
-                            <div class="flex flex-col">
-                                <span class="text-2xl font-bold text-black">60 RON</span>
-                                <span class="text-sm text-gray-500 line-through">97.46 RON</span>
-                            </div>
-                        </div>
-                        <div class="flex space-x-2">
-                            <button class="flex-1 bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition-colors">
-                                <i class="fas fa-cart-plus mr-2"></i>Adaugă în Coș
-                            </button>
-                            <button class="flex-1 bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors">
-                                <i class="fas fa-shopping-cart mr-2"></i>Cumpără Acum
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <!-- Product 13: Glass Shield Spray -->
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 relative">
-                    <div class="absolute top-4 right-4 bg-red-600 text-white px-3 py-1 rounded-full text-sm font-bold z-10">-23%</div>
-                    <div class="h-48 bg-gray-100 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop" alt="Glass Shield Spray" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">Glass Shield Spray</h3>
-                        <p class="text-gray-600 text-sm mb-4">Produse profesionale de protecție ceramică și detailing auto Nasiol</p>
-                        <div class="flex items-center justify-between mb-4">
-                            <div class="flex flex-col">
-                                <span class="text-2xl font-bold text-black">80 RON</span>
-                                <span class="text-sm text-gray-500 line-through">104.42 RON</span>
-                            </div>
-                        </div>
-                        <div class="flex space-x-2">
-                            <button class="flex-1 bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition-colors">
-                                <i class="fas fa-cart-plus mr-2"></i>Adaugă în Coș
-                            </button>
-                            <button class="flex-1 bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors">
-                                <i class="fas fa-shopping-cart mr-2"></i>Cumpără Acum
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <!-- Product 14: Glass Shield Servetele -->
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 relative">
-                    <div class="absolute top-4 right-4 bg-red-600 text-white px-3 py-1 rounded-full text-sm font-bold z-10">-39%</div>
-                    <div class="h-48 bg-gray-100 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop" alt="Glass Shield Servetele" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">Glass Shield Servetele</h3>
-                        <p class="text-gray-600 text-sm mb-4">Produse profesionale de protecție ceramică și detailing auto Nasiol</p>
-                        <div class="flex items-center justify-between mb-4">
-                            <div class="flex flex-col">
-                                <span class="text-2xl font-bold text-black">40 RON</span>
-                                <span class="text-sm text-gray-500 line-through">65.87 RON</span>
-                            </div>
-                        </div>
-                        <div class="flex space-x-2">
-                            <button class="flex-1 bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition-colors">
-                                <i class="fas fa-cart-plus mr-2"></i>Adaugă în Coș
-                            </button>
-                            <button class="flex-1 bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors">
-                                <i class="fas fa-shopping-cart mr-2"></i>Cumpără Acum
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <!-- Product 15: Detailer Shine -->
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 relative">
-                    <div class="absolute top-4 right-4 bg-red-600 text-white px-3 py-1 rounded-full text-sm font-bold z-10">-38%</div>
-                    <div class="h-48 bg-gray-100 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop" alt="Detailer Shine" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">Detailer Shine</h3>
-                        <p class="text-gray-600 text-sm mb-4">Produse profesionale de protecție ceramică și detailing auto Nasiol</p>
-                        <div class="flex items-center justify-between mb-4">
-                            <div class="flex flex-col">
-                                <span class="text-2xl font-bold text-black">75 RON</span>
-                                <span class="text-sm text-gray-500 line-through">120.49 RON</span>
-                            </div>
-                        </div>
-                        <div class="flex space-x-2">
-                            <button class="flex-1 bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition-colors">
-                                <i class="fas fa-cart-plus mr-2"></i>Adaugă în Coș
-                            </button>
-                            <button class="flex-1 bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors">
-                                <i class="fas fa-shopping-cart mr-2"></i>Cumpără Acum
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <!-- Product 16: Universal Precleaner -->
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 relative">
-                    <div class="absolute top-4 right-4 bg-red-600 text-white px-3 py-1 rounded-full text-sm font-bold z-10">-40%</div>
-                    <div class="h-48 bg-gray-100 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop" alt="Universal Precleaner" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">Universal Precleaner</h3>
-                        <p class="text-gray-600 text-sm mb-4">Produse profesionale de protecție ceramică și detailing auto Nasiol</p>
-                        <div class="flex items-center justify-between mb-4">
-                            <div class="flex flex-col">
-                                <span class="text-2xl font-bold text-black">45 RON</span>
-                                <span class="text-sm text-gray-500 line-through">75.00 RON</span>
-                            </div>
-                        </div>
-                        <div class="flex space-x-2">
-                            <button class="flex-1 bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition-colors">
-                                <i class="fas fa-cart-plus mr-2"></i>Adaugă în Coș
-                            </button>
-                            <button class="flex-1 bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors">
-                                <i class="fas fa-shopping-cart mr-2"></i>Cumpără Acum
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <!-- Product 17: Magic Apc -->
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 relative">
-                    <div class="absolute top-4 right-4 bg-red-600 text-white px-3 py-1 rounded-full text-sm font-bold z-10">-59%</div>
-                    <div class="h-48 bg-gray-100 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop" alt="Magic Apc" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">Magic Apc</h3>
-                        <p class="text-gray-600 text-sm mb-4">Produse profesionale de protecție ceramică și detailing auto Nasiol</p>
-                        <div class="flex items-center justify-between mb-4">
-                            <div class="flex flex-col">
-                                <span class="text-2xl font-bold text-black">40 RON</span>
-                                <span class="text-sm text-gray-500 line-through">97.46 RON</span>
-                            </div>
-                        </div>
-                        <div class="flex space-x-2">
-                            <button class="flex-1 bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition-colors">
-                                <i class="fas fa-cart-plus mr-2"></i>Adaugă în Coș
-                            </button>
-                            <button class="flex-1 bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors">
-                                <i class="fas fa-shopping-cart mr-2"></i>Cumpără Acum
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <!-- Product 18: Metal Coat F2 -->
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 relative">
-                    <div class="absolute top-4 right-4 bg-red-600 text-white px-3 py-1 rounded-full text-sm font-bold z-10">-31%</div>
-                    <div class="h-48 bg-gray-100 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop" alt="Metal Coat F2" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">Metal Coat F2</h3>
-                        <p class="text-gray-600 text-sm mb-4">Produse profesionale de protecție ceramică și detailing auto Nasiol</p>
-                        <div class="flex items-center justify-between mb-4">
-                            <div class="flex flex-col">
-                                <span class="text-2xl font-bold text-black">150 RON</span>
-                                <span class="text-sm text-gray-500 line-through">218.48 RON</span>
-                            </div>
-                        </div>
-                        <div class="flex space-x-2">
-                            <button class="flex-1 bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition-colors">
-                                <i class="fas fa-cart-plus mr-2"></i>Adaugă în Coș
-                            </button>
-                            <button class="flex-1 bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors">
-                                <i class="fas fa-shopping-cart mr-2"></i>Cumpără Acum
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <!-- Product 19: Cabin Care -->
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 relative">
-                    <div class="absolute top-4 right-4 bg-red-600 text-white px-3 py-1 rounded-full text-sm font-bold z-10">-42%</div>
-                    <div class="h-48 bg-gray-100 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop" alt="Cabin Care" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">Cabin Care</h3>
-                        <p class="text-gray-600 text-sm mb-4">Produse profesionale de protecție ceramică și detailing auto Nasiol</p>
-                        <div class="flex items-center justify-between mb-4">
-                            <div class="flex flex-col">
-                                <span class="text-2xl font-bold text-black">95 RON</span>
-                                <span class="text-sm text-gray-500 line-through">163.33 RON</span>
-                            </div>
-                        </div>
-                        <div class="flex space-x-2">
-                            <button class="flex-1 bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition-colors">
-                                <i class="fas fa-cart-plus mr-2"></i>Adaugă în Coș
-                            </button>
-                            <button class="flex-1 bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors">
-                                <i class="fas fa-shopping-cart mr-2"></i>Cumpără Acum
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <!-- Product 20: Nano Seat Protect -->
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 relative">
-                    <div class="absolute top-4 right-4 bg-red-600 text-white px-3 py-1 rounded-full text-sm font-bold z-10">-37%</div>
-                    <div class="h-48 bg-gray-100 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop" alt="Nano Seat Protect" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">Nano Seat Protect</h3>
-                        <p class="text-gray-600 text-sm mb-4">Produse profesionale de protecție ceramică și detailing auto Nasiol</p>
-                        <div class="flex items-center justify-between mb-4">
-                            <div class="flex flex-col">
-                                <span class="text-2xl font-bold text-black">110 RON</span>
-                                <span class="text-sm text-gray-500 line-through">175.11 RON</span>
-                            </div>
-                        </div>
-                        <div class="flex space-x-2">
-                            <button class="flex-1 bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition-colors">
-                                <i class="fas fa-cart-plus mr-2"></i>Adaugă în Coș
-                            </button>
-                            <button class="flex-1 bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors">
-                                <i class="fas fa-shopping-cart mr-2"></i>Cumpără Acum
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <!-- Product 21: Leather Cleaner -->
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 relative">
-                    <div class="absolute top-4 right-4 bg-red-600 text-white px-3 py-1 rounded-full text-sm font-bold z-10">-32%</div>
-                    <div class="h-48 bg-gray-100 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop" alt="Leather Cleaner" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">Leather Cleaner</h3>
-                        <p class="text-gray-600 text-sm mb-4">Produse profesionale de protecție ceramică și detailing auto Nasiol</p>
-                        <div class="flex items-center justify-between mb-4">
-                            <div class="flex flex-col">
-                                <span class="text-2xl font-bold text-black">45 RON</span>
-                                <span class="text-sm text-gray-500 line-through">65.87 RON</span>
-                            </div>
-                        </div>
-                        <div class="flex space-x-2">
-                            <button class="flex-1 bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition-colors">
-                                <i class="fas fa-cart-plus mr-2"></i>Adaugă în Coș
-                            </button>
-                            <button class="flex-1 bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors">
-                                <i class="fas fa-shopping-cart mr-2"></i>Cumpără Acum
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <!-- Product 22: Team Apc 500 Ml Concentrat -->
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 relative">
-                    <div class="absolute top-4 right-4 bg-red-600 text-white px-3 py-1 rounded-full text-sm font-bold z-10">-33%</div>
-                    <div class="h-48 bg-gray-100 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop" alt="Team Apc 500 Ml Concentrat" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">Team Apc 500 Ml Concentrat</h3>
-                        <p class="text-gray-600 text-sm mb-4">Produse profesionale de protecție ceramică și detailing auto Nasiol</p>
-                        <div class="flex items-center justify-between mb-4">
-                            <div class="flex flex-col">
-                                <span class="text-2xl font-bold text-black">65 RON</span>
-                                <span class="text-sm text-gray-500 line-through">97.46 RON</span>
-                            </div>
-                        </div>
-                        <div class="flex space-x-2">
-                            <button class="flex-1 bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition-colors">
-                                <i class="fas fa-cart-plus mr-2"></i>Adaugă în Coș
-                            </button>
-                            <button class="flex-1 bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors">
-                                <i class="fas fa-shopping-cart mr-2"></i>Cumpără Acum
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <!-- Product 23: Cleanion 500 Ml -->
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 relative">
-                    <div class="absolute top-4 right-4 bg-red-600 text-white px-3 py-1 rounded-full text-sm font-bold z-10">-34%</div>
-                    <div class="h-48 bg-gray-100 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop" alt="Cleanion 500 Ml" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">Cleanion 500 Ml</h3>
-                        <p class="text-gray-600 text-sm mb-4">Produse profesionale de protecție ceramică și detailing auto Nasiol</p>
-                        <div class="flex items-center justify-between mb-4">
-                            <div class="flex flex-col">
-                                <span class="text-2xl font-bold text-black">50 RON</span>
-                                <span class="text-sm text-gray-500 line-through">76.04 RON</span>
-                            </div>
-                        </div>
-                        <div class="flex space-x-2">
-                            <button class="flex-1 bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition-colors">
-                                <i class="fas fa-cart-plus mr-2"></i>Adaugă în Coș
-                            </button>
-                            <button class="flex-1 bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors">
-                                <i class="fas fa-shopping-cart mr-2"></i>Cumpără Acum
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <!-- Product 24: Cabin Shine -->
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 relative">
-                    <div class="absolute top-4 right-4 bg-red-600 text-white px-3 py-1 rounded-full text-sm font-bold z-10">-32%</div>
-                    <div class="h-48 bg-gray-100 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop" alt="Cabin Shine" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">Cabin Shine</h3>
-                        <p class="text-gray-600 text-sm mb-4">Produse profesionale de protecție ceramică și detailing auto Nasiol</p>
-                        <div class="flex items-center justify-between mb-4">
-                            <div class="flex flex-col">
-                                <span class="text-2xl font-bold text-black">60 RON</span>
-                                <span class="text-sm text-gray-500 line-through">87.82 RON</span>
-                            </div>
-                        </div>
-                        <div class="flex space-x-2">
-                            <button class="flex-1 bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition-colors">
-                                <i class="fas fa-cart-plus mr-2"></i>Adaugă în Coș
-                            </button>
-                            <button class="flex-1 bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors">
-                                <i class="fas fa-shopping-cart mr-2"></i>Cumpără Acum
-                            </button>
-                        </div>
-                    </div>
-                </div>
+                <!-- TOATE produsele Nasiol vor fi încărcate aici -->
             </div>
         </div>
     </section>
@@ -1202,7 +597,7 @@
     </div>
 
     <script>
-        // Extended battery data from Sorgeti.ro (122+ products) - COMPLETE DATABASE
+        // Baterii complete (86 de produse)
         const batteryProducts = [
             {id: 1, name: "Baterie auto 50Ah Sorgeti Forte 207x175x175 420A 12V", brand: "sorgeti", capacity: 50, price: 234, originalPrice: 280, amperage: "32-54", compatibleCars: ["dacia", "renault", "ford"], image: "https://sorgeti.ro/img/p/1/0/1/0/1010-large_default.jpg"},
             {id: 2, name: "Baterie auto 40Ah Zap Plus Japan Car 187x127x227 300A 12V", brand: "zap", capacity: 40, price: 240, originalPrice: 290, amperage: "32-54", compatibleCars: ["honda", "toyota", "nissan"], image: "https://sorgeti.ro/img/p/5/6/5/565-large_default.jpg"},
@@ -1239,11 +634,11 @@
             {id: 33, name: "Baterie auto 66Ah Sorgeti Estremo 242x175x190 660A 12V", brand: "sorgeti", capacity: 66, price: 372, originalPrice: 448, amperage: "55-66", compatibleCars: ["volkswagen", "audi"], image: "https://sorgeti.ro/img/p/1/1/0/3/1103-large_default.jpg"},
             {id: 34, name: "Baterie auto 78Ah Sorgeti Argento 278x175x190 720A 12V", brand: "sorgeti", capacity: 78, price: 375, originalPrice: 430, amperage: "67-80", compatibleCars: ["bmw", "mercedes", "audi"], image: "https://sorgeti.ro/img/p/1/1/0/2/1102-large_default.jpg"},
             {id: 35, name: "Baterie auto 80Ah Sorgeti Forte 278x175x190 720A 12V", brand: "sorgeti", capacity: 80, price: 380, originalPrice: 457, amperage: "67-80", compatibleCars: ["bmw", "mercedes", "audi"], image: "https://sorgeti.ro/img/p/1/0/1/0/1010-large_default.jpg"},
-            {id: 36, name: "Baterie auto 65Ah Sorgeti Argento EFB Start-Stop 242x175x190 600A 12V", brand: "sorgeti", capacity: 65, price: 385, originalPrice: 440, amperage: "55-66", compatibleCars: ["volkswagen", "audi", "bmw"], image: "https://sorgeti.ro/img/p/1/1/0/2/1102-large_default.jpg"},
-            {id: 37, name: "Baterie auto 55Ah Midac Itineris JIS EFB Start-Stop 237x128x220 460A 12V", brand: "midac", capacity: 55, price: 388, originalPrice: 448, amperage: "55-66", compatibleCars: ["honda", "toyota", "nissan"], image: "https://sorgeti.ro/img/p/5/5/j/55j-large_default.jpg"},
+            {id: 36, name: "Baterie auto 65Ah Sorgeti Argento EFB Start-Stop 242x175x190 600A 12V", brand: "sorgeti", capacity: 65, price: 385, originalPrice: 440, amperage: "55-66", compatibleCars: ["bmw", "audi", "mercedes"], image: "https://sorgeti.ro/img/p/1/1/0/2/1102-large_default.jpg"},
+            {id: 37, name: "Baterie auto 55Ah Midac Itineris JIS EFB Start-Stop 237x128x220 460A 12V", brand: "midac", capacity: 55, price: 388, originalPrice: 448, amperage: "55-66", compatibleCars: ["honda", "toyota", "mazda", "nissan"], image: "https://sorgeti.ro/img/p/5/5/j/55j-large_default.jpg"},
             {id: 38, name: "Baterie auto 80Ah Sorgeti Argento 278x175x190 780A 12V", brand: "sorgeti", capacity: 80, price: 388, originalPrice: 432, amperage: "67-80", compatibleCars: ["bmw", "mercedes", "audi"], image: "https://sorgeti.ro/img/p/1/1/0/2/1102-large_default.jpg"},
             {id: 39, name: "Baterie auto 75Ah Sorgeti Estremo 278x175x175 720A 12V", brand: "sorgeti", capacity: 75, price: 390, originalPrice: 470, amperage: "67-80", compatibleCars: ["bmw", "mercedes", "audi"], image: "https://sorgeti.ro/img/p/1/1/0/3/1103-large_default.jpg"},
-            {id: 40, name: "Baterie auto 66Ah Sorgeti Supremo EFB Start-Stop 242x175x190 650A 12V", brand: "sorgeti", capacity: 66, price: 391, originalPrice: 470, amperage: "55-66", compatibleCars: ["volkswagen", "audi", "bmw"], image: "https://sorgeti.ro/img/p/1/1/0/4/1104-large_default.jpg"},
+            {id: 40, name: "Baterie auto 66Ah Sorgeti Supremo EFB Start-Stop 242x175x190 650A 12V", brand: "sorgeti", capacity: 66, price: 391, originalPrice: 470, amperage: "55-66", compatibleCars: ["bmw", "audi", "mercedes"], image: "https://sorgeti.ro/img/p/1/1/0/4/1104-large_default.jpg"},
             {id: 41, name: "Baterie auto 66Ah Sorgeti Argento EFB Start-Stop 242x175x190 650A 12V", brand: "sorgeti", capacity: 66, price: 391, originalPrice: 441, amperage: "55-66", compatibleCars: ["volkswagen", "audi"], image: "https://sorgeti.ro/img/p/1/1/0/2/1102-large_default.jpg"},
             {id: 42, name: "Baterie auto 80Ah ZAP Silver Premium 278x175x190 760A 12V", brand: "zap", capacity: 80, price: 395, originalPrice: 475, amperage: "67-80", compatibleCars: ["bmw", "mercedes", "audi"], image: "https://sorgeti.ro/img/p/5/8/0/580-large_default.jpg"},
             {id: 43, name: "Baterie auto 77Ah Sorgeti Estremo 278x175x175 760A 12V", brand: "sorgeti", capacity: 77, price: 407, originalPrice: 477, amperage: "67-80", compatibleCars: ["bmw", "mercedes", "audi"], image: "https://sorgeti.ro/img/p/1/1/0/3/1103-large_default.jpg"},
@@ -1292,258 +687,36 @@
             {id: 86, name: "Baterie auto 112Ah Exide AGM Start-Stop EA1120 392x175x190 920A 12V", brand: "exide", capacity: 112, price: 770, originalPrice: 770, amperage: "82-110", compatibleCars: ["bmw", "mercedes", "audi"], image: "https://sorgeti.ro/img/p/e/x/ex3-large_default.jpg"}
         ];
 
-        // State management for slider
+        // TOATE produsele Nasiol (24 de produse) - AFISATE INTEGRAL
+        const detailingProducts = [
+            { id: 1000, name: "Nasiol PPFGuard", description: "Protecție ceramică profesională pentru folii PPF - Rezistență UV și hidrofobicitate superioară", price: 290, originalPrice: 511.4, category: "nasiol", brand: "Nasiol", image: "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop" },
+            { id: 1001, name: "Nasiol Leather Boost", description: "Protecție nano-ceramică pentru piele - Hidratare și protecție UV", price: 170, originalPrice: 272.57, category: "nasiol", brand: "Nasiol", image: "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop" },
+            { id: 1002, name: "Nasiol Trim Coat", description: "Restaurare și protecție pentru plasticele exterioare - Aspect nou și protecție UV", price: 140, originalPrice: 272.57, category: "nasiol", brand: "Nasiol", image: "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop" },
+            { id: 1003, name: "Nasiol Headlight Restorer Kit", description: "Kit complet pentru restaurarea farurilor - Îndepărtează opacitatea și protejează", price: 65, originalPrice: 150.0, category: "nasiol", brand: "Nasiol", image: "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop" },
+            { id: 1004, name: "Nasiol Parfum New Car Smell", description: "Parfum auto profesional - Miros de mașină nouă autentic", price: 40, originalPrice: 50.87, category: "nasiol", brand: "Nasiol", image: "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop" },
+            { id: 1005, name: "Nasiol Parfum Mango", description: "Parfum auto exotic - Aromă de mango de lungă durată", price: 40, originalPrice: 50.87, category: "nasiol", brand: "Nasiol", image: "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop" },
+            { id: 1006, name: "Mănușă de Spălat Mașina Premium", description: "Mănușă premium pentru spălare - Material moale și absorbant", price: 45, originalPrice: 53.55, category: "nasiol", brand: "Nasiol", image: "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop" },
+            { id: 1007, name: "Set Lavete Microfibre (10 buc)", description: "Set 10 lavete microfibre profesionale - Pentru curățare fără zgârieturi", price: 65, originalPrice: 65, category: "nasiol", brand: "Nasiol", image: "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop" },
+            { id: 1008, name: "Prosop Auto Premium", description: "Prosop absorbant de înaltă calitate - Uscare rapidă fără urme", price: 60, originalPrice: 73.0, category: "nasiol", brand: "Nasiol", image: "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop" },
+            { id: 1009, name: "Nasiol Rapid Shine", description: "Spray quick detailer - Strălucire instantanee și protecție rapidă", price: 80, originalPrice: 136.02, category: "nasiol", brand: "Nasiol", image: "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop" },
+            { id: 1010, name: "Nasiol NeoCoat X", description: "Protecție ceramică semi-permanentă - Durabilitate până la 6 luni", price: 175, originalPrice: 284.89, category: "nasiol", brand: "Nasiol", image: "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop" },
+            { id: 1011, name: "Nasiol Temporoad", description: "Protecție temporară pentru vopsea - Ideal pentru drumuri lungi", price: 60, originalPrice: 97.46, category: "nasiol", brand: "Nasiol", image: "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop" },
+            { id: 1012, name: "Nasiol Glass Shield Spray", description: "Protecție hidrofobă pentru geamuri - Vizibilitate perfectă la ploaie", price: 80, originalPrice: 104.42, category: "nasiol", brand: "Nasiol", image: "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop" },
+            { id: 1013, name: "Nasiol Glass Shield Șervețele", description: "Șervețele impregnate pentru geamuri - Aplicare rapidă și ușoară", price: 40, originalPrice: 65.87, category: "nasiol", brand: "Nasiol", image: "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop" },
+            { id: 1014, name: "Nasiol Detailer Shine", description: "Spray pentru finisaj - Strălucire și protecție între spălări", price: 75, originalPrice: 120.49, category: "nasiol", brand: "Nasiol", image: "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop" },
+            { id: 1015, name: "Nasiol Universal Precleaner", description: "Curățător universal pre-aplicare - Pregătește suprafața pentru coating", price: 45, originalPrice: 75.0, category: "nasiol", brand: "Nasiol", image: "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop" },
+            { id: 1016, name: "Nasiol Magic APC", description: "Curățător universal concentrat - Pentru toate suprafețele", price: 40, originalPrice: 97.46, category: "nasiol", brand: "Nasiol", image: "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop" },
+            { id: 1017, name: "Nasiol MetalCoat F2", description: "Protecție ceramică pentru suprafețe metalice - Anti-coroziune și strălucire", price: 150, originalPrice: 218.48, category: "nasiol", brand: "Nasiol", image: "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop" },
+            { id: 1018, name: "Nasiol Cabin Care", description: "Protecție și curățare pentru interior - Aspect proaspăt și protecție UV", price: 95, originalPrice: 163.33, category: "nasiol", brand: "Nasiol", image: "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop" },
+            { id: 1019, name: "Nasiol Nano Seat Protect", description: "Protecție nano pentru scaune - Repelent la lichide și pete", price: 110, originalPrice: 175.11, category: "nasiol", brand: "Nasiol", image: "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop" },
+            { id: 1020, name: "Nasiol Leather Cleaner", description: "Curățător special pentru piele - Formula blândă și eficientă", price: 45, originalPrice: 65.87, category: "nasiol", brand: "Nasiol", image: "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop" },
+            { id: 1021, name: "Nasiol Team APC 500ml Concentrat", description: "Curățător universal concentrat profesional - Eficiență maximă", price: 65, originalPrice: 97.46, category: "nasiol", brand: "Nasiol", image: "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop" },
+            { id: 1022, name: "Nasiol Cleanion 500ml", description: "Soluție de curățare avansată - Pentru toate tipurile de suprafețe", price: 50, originalPrice: 76.04, category: "nasiol", brand: "Nasiol", image: "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop" },
+            { id: 1023, name: "Nasiol Cabin Shine", description: "Spray pentru finisaj interior - Strălucire și protecție pentru bord", price: 60, originalPrice: 87.82, category: "nasiol", brand: "Nasiol", image: "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop" }
+        ];
+
         let showAllBatteries = false;
         let filteredBatteries = [...batteryProducts];
-
-        // Produse Nasiol detailing - toate produsele de pe eMAG La Garaj
-const nasiolProducts = [
-    {
-        "id": 1000,
-        "name": "Nasiol PPFGuard",
-        "description": "Protecție ceramică profesională pentru folii PPF - Rezistență UV și hidrofobicitate superioară",
-        "price": 290,
-        "originalPrice": 511.4,
-        "category": "nasiol",
-        "brand": "Nasiol",
-        "image": "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop"
-    },
-    {
-        "id": 1001,
-        "name": "Nasiol Leather Boost",
-        "description": "Protecție nano-ceramică pentru piele - Hidratare și protecție UV",
-        "price": 170,
-        "originalPrice": 272.57,
-        "category": "nasiol",
-        "brand": "Nasiol",
-        "image": "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop"
-    },
-    {
-        "id": 1002,
-        "name": "Nasiol Trim Coat",
-        "description": "Restaurare și protecție pentru plasticele exterioare - Aspect nou și protecție UV",
-        "price": 140,
-        "originalPrice": 272.57,
-        "category": "nasiol",
-        "brand": "Nasiol",
-        "image": "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop"
-    },
-    {
-        "id": 1003,
-        "name": "Nasiol Headlight Restorer Kit",
-        "description": "Kit complet pentru restaurarea farurilor - Îndepărtează opacitatea și protejează",
-        "price": 65,
-        "originalPrice": 150.0,
-        "category": "nasiol",
-        "brand": "Nasiol",
-        "image": "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop"
-    },
-    {
-        "id": 1004,
-        "name": "Nasiol Parfum New Car Smell",
-        "description": "Parfum auto profesional - Miros de mașină nouă autentic",
-        "price": 40,
-        "originalPrice": 50.87,
-        "category": "nasiol",
-        "brand": "Nasiol",
-        "image": "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop"
-    },
-    {
-        "id": 1005,
-        "name": "Nasiol Parfum Mango",
-        "description": "Parfum auto exotic - Aromă de mango de lungă durată",
-        "price": 40,
-        "originalPrice": 50.87,
-        "category": "nasiol",
-        "brand": "Nasiol",
-        "image": "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop"
-    },
-    {
-        "id": 1006,
-        "name": "Mănușă de Spălat Mașina Premium",
-        "description": "Mănușă premium pentru spălare - Material moale și absorbant",
-        "price": 45,
-        "originalPrice": 53.55,
-        "category": "nasiol",
-        "brand": "Nasiol",
-        "image": "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop"
-    },
-    {
-        "id": 1007,
-        "name": "Set Lavete Microfibre (10 buc)",
-        "description": "Set 10 lavete microfibre profesionale - Pentru curățare fără zgârieturi",
-        "price": 65,
-        "originalPrice": 65,
-        "category": "nasiol",
-        "brand": "Nasiol",
-        "image": "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop"
-    },
-    {
-        "id": 1008,
-        "name": "Prosop Auto Premium",
-        "description": "Prosop absorbant de înaltă calitate - Uscare rapidă fără urme",
-        "price": 60,
-        "originalPrice": 73.0,
-        "category": "nasiol",
-        "brand": "Nasiol",
-        "image": "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop"
-    },
-    {
-        "id": 1009,
-        "name": "Nasiol Rapid Shine",
-        "description": "Spray quick detailer - Strălucire instantanee și protecție rapidă",
-        "price": 80,
-        "originalPrice": 136.02,
-        "category": "nasiol",
-        "brand": "Nasiol",
-        "image": "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop"
-    },
-    {
-        "id": 1010,
-        "name": "Nasiol NeoCoat X",
-        "description": "Protecție ceramică semi-permanentă - Durabilitate până la 6 luni",
-        "price": 175,
-        "originalPrice": 284.89,
-        "category": "nasiol",
-        "brand": "Nasiol",
-        "image": "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop"
-    },
-    {
-        "id": 1011,
-        "name": "Nasiol Temporoad",
-        "description": "Protecție temporară pentru vopsea - Ideal pentru drumuri lungi",
-        "price": 60,
-        "originalPrice": 97.46,
-        "category": "nasiol",
-        "brand": "Nasiol",
-        "image": "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop"
-    },
-    {
-        "id": 1012,
-        "name": "Nasiol Glass Shield Spray",
-        "description": "Protecție hidrofobă pentru geamuri - Vizibilitate perfectă la ploaie",
-        "price": 80,
-        "originalPrice": 104.42,
-        "category": "nasiol",
-        "brand": "Nasiol",
-        "image": "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop"
-    },
-    {
-        "id": 1013,
-        "name": "Nasiol Glass Shield Șervețele",
-        "description": "Șervețele impregnate pentru geamuri - Aplicare rapidă și ușoară",
-        "price": 40,
-        "originalPrice": 65.87,
-        "category": "nasiol",
-        "brand": "Nasiol",
-        "image": "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop"
-    },
-    {
-        "id": 1014,
-        "name": "Nasiol Detailer Shine",
-        "description": "Spray pentru finisaj - Strălucire și protecție între spălări",
-        "price": 75,
-        "originalPrice": 120.49,
-        "category": "nasiol",
-        "brand": "Nasiol",
-        "image": "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop"
-    },
-    {
-        "id": 1015,
-        "name": "Nasiol Universal Precleaner",
-        "description": "Curățător universal pre-aplicare - Pregătește suprafața pentru coating",
-        "price": 45,
-        "originalPrice": 75.0,
-        "category": "nasiol",
-        "brand": "Nasiol",
-        "image": "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop"
-    },
-    {
-        "id": 1016,
-        "name": "Nasiol Magic APC",
-        "description": "Curățător universal concentrat - Pentru toate suprafețele",
-        "price": 40,
-        "originalPrice": 97.46,
-        "category": "nasiol",
-        "brand": "Nasiol",
-        "image": "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop"
-    },
-    {
-        "id": 1017,
-        "name": "Nasiol MetalCoat F2",
-        "description": "Protecție ceramică pentru suprafețe metalice - Anti-coroziune și strălucire",
-        "price": 150,
-        "originalPrice": 218.48,
-        "category": "nasiol",
-        "brand": "Nasiol",
-        "image": "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop"
-    },
-    {
-        "id": 1018,
-        "name": "Nasiol Cabin Care",
-        "description": "Protecție și curățare pentru interior - Aspect proaspăt și protecție UV",
-        "price": 95,
-        "originalPrice": 163.33,
-        "category": "nasiol",
-        "brand": "Nasiol",
-        "image": "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop"
-    },
-    {
-        "id": 1019,
-        "name": "Nasiol Nano Seat Protect",
-        "description": "Protecție nano pentru scaune - Repelent la lichide și pete",
-        "price": 110,
-        "originalPrice": 175.11,
-        "category": "nasiol",
-        "brand": "Nasiol",
-        "image": "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop"
-    },
-    {
-        "id": 1020,
-        "name": "Nasiol Leather Cleaner",
-        "description": "Curățător special pentru piele - Formula blândă și eficientă",
-        "price": 45,
-        "originalPrice": 65.87,
-        "category": "nasiol",
-        "brand": "Nasiol",
-        "image": "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop"
-    },
-    {
-        "id": 1021,
-        "name": "Nasiol Team APC 500ml Concentrat",
-        "description": "Curățător universal concentrat profesional - Eficiență maximă",
-        "price": 65,
-        "originalPrice": 97.46,
-        "category": "nasiol",
-        "brand": "Nasiol",
-        "image": "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop"
-    },
-    {
-        "id": 1022,
-        "name": "Nasiol Cleanion 500ml",
-        "description": "Soluție de curățare avansată - Pentru toate tipurile de suprafețe",
-        "price": 50,
-        "originalPrice": 76.04,
-        "category": "nasiol",
-        "brand": "Nasiol",
-        "image": "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop"
-    },
-    {
-        "id": 1023,
-        "name": "Nasiol Cabin Shine",
-        "description": "Spray pentru finisaj interior - Strălucire și protecție pentru bord",
-        "price": 60,
-        "originalPrice": 87.82,
-        "category": "nasiol",
-        "brand": "Nasiol",
-        "image": "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop"
-    }
-];
-
-// Merge all products together
-const allProducts = [...batteryProducts, ...nasiolProducts];
-
-
         let cart = [];
         let allProducts = [...batteryProducts, ...detailingProducts];
 
@@ -1575,20 +748,19 @@ const allProducts = [...batteryProducts, ...nasiolProducts];
                 grid.innerHTML += card;
             });
             
-            // Update button text
             const btnText = document.getElementById('btnText');
             const showMoreBtn = document.getElementById('showMoreBtn');
             if (btnText && showMoreBtn) {
                 if (showAllBatteries) {
                     btnText.textContent = 'Arată Mai Puține';
-                    showMoreBtn.innerHTML = '<i class="fas fa-minus-circle mr-2"></i>' + btnText.outerHTML;
+                    showMoreBtn.innerHTML = '<i class="fas fa-minus-circle mr-2"></i><span id="btnText">Arată Mai Puține</span>';
                 } else {
                     btnText.textContent = `Vezi Toate Bateriile (${filteredBatteries.length})`;
-                    showMoreBtn.innerHTML = '<i class="fas fa-plus-circle mr-2"></i>' + btnText.outerHTML;
+                    showMoreBtn.innerHTML = '<i class="fas fa-plus-circle mr-2"></i><span id="btnText">Vezi Toate Bateriile (' + filteredBatteries.length + ')</span>';
                 }
             }
         }
-        
+
         function toggleShowAll() {
             showAllBatteries = !showAllBatteries;
             loadBatteries();
@@ -1599,7 +771,8 @@ const allProducts = [...batteryProducts, ...nasiolProducts];
             const grid = document.getElementById('detailingGrid');
             grid.innerHTML = '';
             
-            detailingProducts.slice(0, 12).forEach(product => {
+            // AFISAM TOATE PRODUSELE Nasiol (24 de produse)
+            detailingProducts.forEach(product => {
                 const card = createProductCard(product, 'detailing');
                 grid.innerHTML += card;
             });
@@ -1763,8 +936,7 @@ const allProducts = [...batteryProducts, ...nasiolProducts];
             document.getElementById('orderFormModal').style.display = 'block';
             updateOrderSummary();
         }
-        
-        // Add event listener for payment method change
+
         document.addEventListener('DOMContentLoaded', function() {
             const paymentMethodSelect = document.getElementById('paymentMethod');
             if (paymentMethodSelect) {
@@ -1817,7 +989,6 @@ const allProducts = [...batteryProducts, ...nasiolProducts];
                 productList += `${item.name} x${item.quantity} - ${item.price} RON = ${itemTotal} RON\n`;
             });
             
-            // Calculate shipping based on payment method
             const shippingCost = paymentMethod === 'pickup' ? 0 : 20;
             const total = subtotal + shippingCost;
             
@@ -1842,17 +1013,14 @@ const allProducts = [...batteryProducts, ...nasiolProducts];
             
             console.log('Sending order...', templateParams);
             
-            // Validate all fields
             if (!name || !email || !phone || !address) {
                 alert('❌ Te rugăm să completezi toate câmpurile obligatorii!');
                 return;
             }
             
-            // Email 1 - către tine (notificare comandă)
             emailjs.send("lagaraj_cjjgybi", "furniz_yifbk8e", templateParams)
             .then((response) => {
                 console.log('Email 1 (furnizor) trimis!', response.status, response.text);
-                // Email 2 - către client (confirmare)
                 return emailjs.send("lagaraj_cjjgybi", "client_5g2sp14", templateParams);
             })
             .then((response) => {
@@ -1892,7 +1060,6 @@ const allProducts = [...batteryProducts, ...nasiolProducts];
         // FLAVIU AI - EXPERT CHATBOT AVANSAT
         // ============================================
 
-        // Bază de cunoștințe avansată
         const flaviuKnowledge = {
             ceramics: {
                 nl272: {
@@ -1958,16 +1125,13 @@ const allProducts = [...batteryProducts, ...nasiolProducts];
             }
         };
 
-        // Motor de răspunsuri inteligent
         function getAIResponse(message) {
             const msg = message.toLowerCase().trim();
             
-            // SALUTĂRI
             if (msg.match(/\b(salut|buna|bună|hey|hello|hei|ce faci)\b/)) {
                 return "Bună! 👋 Sunt Flaviu, expertul La Garaj în baterii auto și protecții ceramice Nasiol. Cum te pot ajuta azi?";
             }
             
-            // PROTECȚII CERAMICE - COMPARĂRI
             if (msg.includes("nl272") && msg.includes("zr53")) {
                 const nl = flaviuKnowledge.ceramics.nl272;
                 const zr = flaviuKnowledge.ceramics.zr53;
@@ -1984,7 +1148,6 @@ const allProducts = [...batteryProducts, ...nasiolProducts];
                 return `**${p.name}** - Campionul protecției! 🏆\n\n💰 Preț: ${p.price}\n⏱️ Durabilitate: ${p.durability}\n💎 Duritate: ${p.hardness} (cea mai mare!)\n🎯 Dificultate: ${p.difficulty}\n\n✅ Beneficii:\n${p.benefits.map(b => `• ${b}`).join('\n')}\n\nVrei să compari cu ZR53?`;
             }
             
-            // BATERII - TIPURI
             if (msg.includes("agm")) {
                 const b = flaviuKnowledge.batteries.types.agm;
                 return `**Baterie ${b.name}** - Top tier! 🔋⚡\n\n⏱️ Durată: ${b.lifespan}\n💰 Preț: ${b.price}\n\n✅ Avantaje:\n${b.pros.map(p => `• ${p}`).join('\n')}\n\n❌ Dezavantaje:\n${b.cons.map(c => `• ${c}`).join('\n')}\n\n🎯 Recomandat: ${b.recommended}`;
@@ -1995,12 +1158,10 @@ const allProducts = [...batteryProducts, ...nasiolProducts];
                 return `**Baterie ${b.name}** - Start-Stop! 🔋\n\n⏱️ Durată: ${b.lifespan}\n💰 Preț: ${b.price}\n\n✅ Avantaje:\n${b.pros.map(p => `• ${p}`).join('\n')}\n\n🎯 Recomandat: ${b.recommended}\n\n${flaviuKnowledge.batteries.comparisons["agm vs efb"]}`;
             }
             
-            // START-STOP
             if ((msg.includes("start") && msg.includes("stop")) || msg.includes("start-stop")) {
                 return `**Baterii pentru Start-Stop:** ⚠️\n\n${flaviuKnowledge.batteries.comparisons["start-stop"]}\n\n**Opțiuni:**\n• EFB - ${flaviuKnowledge.batteries.types.efb.price}\n• AGM - ${flaviuKnowledge.batteries.types.agm.price}\n\nMarca mașinii tale?`;
             }
             
-            // GENERALE
             if (msg.includes("comand") || msg.includes("cumpăr")) {
                 return "Super! 🛒 Pentru comandă:\n\n1️⃣ Alege produsul din **Baterii** sau **Detailing**\n2️⃣ Click **\"Adaugă în Coș\"**\n3️⃣ Completează formularul\n4️⃣ Primești confirmare pe email!\n\n📞 Sau sună: **+40 727 833 343**";
             }
@@ -2017,11 +1178,9 @@ const allProducts = [...batteryProducts, ...nasiolProducts];
                 return "Prețuri competitive! 💰\n\n**Baterii:** 234-800 RON\n**Nasiol:** 50-1300 RON\n\n+ Livrare și montaj gratuit!\n\nCe produs te interesează?";
             }
             
-            // DEFAULT
             return `Nu sunt sigur ce întrebi, dar sunt aici! 😊\n\nÎncearcă:\n\n🔋 **Baterii:**\n• "Ce baterie AGM recomanzi?"\n• "Diferența AGM și EFB?"\n• "Baterie Start-Stop?"\n\n✨ **Ceramică Nasiol:**\n• "Ce e NL272?"\n• "NeoCoatX vs ZR53?"\n• "Prima ceramică?"\n\n📞 **+40 727 833 343**`;
         }
 
-        // AI Chatbot functions
         function toggleChat() {
             const chatWindow = document.getElementById('chatWindow');
             chatWindow.style.display = chatWindow.style.display === 'flex' ? 'none' : 'flex';
@@ -2052,4 +1211,3 @@ const allProducts = [...batteryProducts, ...nasiolProducts];
     </script>
 </body>
 </html>
-
