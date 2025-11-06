@@ -697,21 +697,253 @@
         let showAllBatteries = false;
         let filteredBatteries = [...batteryProducts];
 
-        // Real detailing products from original La Garaj document with real Nasiol.ro images
-        const detailingProducts = [
-            {id: 101, name: "NL272 Ceramic Coating Premium", category: "ceramic", price: 1300, originalPrice: 1300, description: "Produs premium de protecție ceramică pentru vopsea cu durabilitate extinsă. Oferă hidrofobie superioară și protecție UV avansată.", image: "https://nasiol.ro/wp-content/uploads/2022/11/NL272-Ceramic-Coating-nasiol-romania-600x600.png"},
-            {id: 102, name: "PPFGUARd", category: "exterior", price: 511.40, originalPrice: 511.40, description: "Folie de protecție transparentă PPF cu auto-vindecare pentru zonele expuse ale caroseriei. Grosime 200 microni.", image: "https://nasiol.ro/wp-content/uploads/2022/11/ppfguard-nasiol-romania-600x600.png"},
-            {id: 103, name: "Leather Boost", category: "interior", price: 272.57, originalPrice: 272.57, description: "Tratament intensiv pentru piele naturală și artificială. Hidratează, protejează și restaurează suprafețele din piele.", image: "https://nasiol.ro/wp-content/uploads/2022/11/Leather-Boost-nasiol-romania-600x600.png"},
-            {id: 104, name: "Trim Coat", category: "exterior", price: 272.57, originalPrice: 272.57, description: "Ceramic coating special pentru plastic și cauciuc. Restaurează culoarea și oferă protecție pe termen lung.", image: "https://nasiol.ro/wp-content/uploads/2022/11/trim-coat-nasiol-romania-600x600.png"},
-            {id: 105, name: "Headlight Restorer Kit", category: "exterior", price: 150, originalPrice: 150, description: "Kit complet cu instrucțiuni de utilizare, șmirghel, mănuși și șervețele cu protecție ceramică pentru restaurarea farurilor.", image: "https://nasiol.ro/wp-content/uploads/2022/11/headlight-restorer-kit-nasiol-romania-600x600.png"},
-            {id: 106, name: "Parfum New Car Smell", category: "interior", price: 50.87, originalPrice: 50.87, description: "Parfum auto cu aromă de mașină nouă. Elimină mirosurile neplăcute și oferă prospețime îndelungată.", image: "https://nasiol.ro/wp-content/uploads/2022/11/parfum-auto-new-car-smell-nasiol-romania-600x600.png"},
-            {id: 107, name: "Glass Shield Spray", category: "exterior", price: 104.42, originalPrice: 104.42, description: "Tratament hidrofob pentru parbriz și geamuri. Îmbunătățește vizibilitatea și siguranța la condus.", image: "https://nasiol.ro/wp-content/uploads/2022/11/glass-shield-spray-nasiol-romania-600x600.png"},
-            {id: 108, name: "Metal Coat F2", category: "exterior", price: 218.48, originalPrice: 218.48, description: "Tratament ceramic pentru suprafețe metalice. Protejează împotriva oxidării și menține luciul.", image: "https://nasiol.ro/wp-content/uploads/2022/11/metalcoat-nasiol-romania-600x600.png"},
-            {id: 109, name: "Cabin Care", category: "interior", price: 163.33, originalPrice: 163.33, description: "Sistem complet de curățare și întreținere pentru habitaclu. Include produse pentru toate suprafețele.", image: "https://nasiol.ro/wp-content/uploads/2022/11/cabin-care-nasiol-romania-600x600.png"},
-            {id: 110, name: "Nano Seat Protect", category: "interior", price: 175.11, originalPrice: 175.11, description: "Tratament nano-ceramic pentru scaune din textile. Protejează împotriva petelor și lichidelor.", image: "https://nasiol.ro/wp-content/uploads/2022/11/nano-seat-protect-nasiol-romania-600x600.png"},
-            {id: 111, name: "Rapid Shine", category: "exterior", price: 136.02, originalPrice: 136.02, description: "Spray rapid pentru strălucire instantă. Quick detailer perfect pentru touch-up-uri rapide între spălări.", image: "https://nasiol.ro/wp-content/uploads/2022/11/rapid-shine-nasiol-romania-600x600.png"},
-            {id: 112, name: "NeoCoat X", category: "ceramic", price: 284.89, originalPrice: 284.89, description: "Ceramic coating profesional cu tehnologie avansată. Protecție 3-5 ani și finisaj oglindă superior.", image: "https://nasiol.ro/wp-content/uploads/2022/11/neocoatx-nasiol-romania-600x600.png"}
-        ];
+        // Produse Nasiol detailing - toate produsele de pe eMAG La Garaj
+const nasiolProducts = [
+    {
+        "id": 1000,
+        "name": "Nasiol PPFGuard",
+        "description": "Protecție ceramică profesională pentru folii PPF - Rezistență UV și hidrofobicitate superioară",
+        "price": 290,
+        "originalPrice": 511.4,
+        "category": "nasiol",
+        "brand": "Nasiol",
+        "image": "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop"
+    },
+    {
+        "id": 1001,
+        "name": "Nasiol Leather Boost",
+        "description": "Protecție nano-ceramică pentru piele - Hidratare și protecție UV",
+        "price": 170,
+        "originalPrice": 272.57,
+        "category": "nasiol",
+        "brand": "Nasiol",
+        "image": "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop"
+    },
+    {
+        "id": 1002,
+        "name": "Nasiol Trim Coat",
+        "description": "Restaurare și protecție pentru plasticele exterioare - Aspect nou și protecție UV",
+        "price": 140,
+        "originalPrice": 272.57,
+        "category": "nasiol",
+        "brand": "Nasiol",
+        "image": "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop"
+    },
+    {
+        "id": 1003,
+        "name": "Nasiol Headlight Restorer Kit",
+        "description": "Kit complet pentru restaurarea farurilor - Îndepărtează opacitatea și protejează",
+        "price": 65,
+        "originalPrice": 150.0,
+        "category": "nasiol",
+        "brand": "Nasiol",
+        "image": "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop"
+    },
+    {
+        "id": 1004,
+        "name": "Nasiol Parfum New Car Smell",
+        "description": "Parfum auto profesional - Miros de mașină nouă autentic",
+        "price": 40,
+        "originalPrice": 50.87,
+        "category": "nasiol",
+        "brand": "Nasiol",
+        "image": "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop"
+    },
+    {
+        "id": 1005,
+        "name": "Nasiol Parfum Mango",
+        "description": "Parfum auto exotic - Aromă de mango de lungă durată",
+        "price": 40,
+        "originalPrice": 50.87,
+        "category": "nasiol",
+        "brand": "Nasiol",
+        "image": "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop"
+    },
+    {
+        "id": 1006,
+        "name": "Mănușă de Spălat Mașina Premium",
+        "description": "Mănușă premium pentru spălare - Material moale și absorbant",
+        "price": 45,
+        "originalPrice": 53.55,
+        "category": "nasiol",
+        "brand": "Nasiol",
+        "image": "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop"
+    },
+    {
+        "id": 1007,
+        "name": "Set Lavete Microfibre (10 buc)",
+        "description": "Set 10 lavete microfibre profesionale - Pentru curățare fără zgârieturi",
+        "price": 65,
+        "originalPrice": 65,
+        "category": "nasiol",
+        "brand": "Nasiol",
+        "image": "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop"
+    },
+    {
+        "id": 1008,
+        "name": "Prosop Auto Premium",
+        "description": "Prosop absorbant de înaltă calitate - Uscare rapidă fără urme",
+        "price": 60,
+        "originalPrice": 73.0,
+        "category": "nasiol",
+        "brand": "Nasiol",
+        "image": "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop"
+    },
+    {
+        "id": 1009,
+        "name": "Nasiol Rapid Shine",
+        "description": "Spray quick detailer - Strălucire instantanee și protecție rapidă",
+        "price": 80,
+        "originalPrice": 136.02,
+        "category": "nasiol",
+        "brand": "Nasiol",
+        "image": "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop"
+    },
+    {
+        "id": 1010,
+        "name": "Nasiol NeoCoat X",
+        "description": "Protecție ceramică semi-permanentă - Durabilitate până la 6 luni",
+        "price": 175,
+        "originalPrice": 284.89,
+        "category": "nasiol",
+        "brand": "Nasiol",
+        "image": "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop"
+    },
+    {
+        "id": 1011,
+        "name": "Nasiol Temporoad",
+        "description": "Protecție temporară pentru vopsea - Ideal pentru drumuri lungi",
+        "price": 60,
+        "originalPrice": 97.46,
+        "category": "nasiol",
+        "brand": "Nasiol",
+        "image": "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop"
+    },
+    {
+        "id": 1012,
+        "name": "Nasiol Glass Shield Spray",
+        "description": "Protecție hidrofobă pentru geamuri - Vizibilitate perfectă la ploaie",
+        "price": 80,
+        "originalPrice": 104.42,
+        "category": "nasiol",
+        "brand": "Nasiol",
+        "image": "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop"
+    },
+    {
+        "id": 1013,
+        "name": "Nasiol Glass Shield Șervețele",
+        "description": "Șervețele impregnate pentru geamuri - Aplicare rapidă și ușoară",
+        "price": 40,
+        "originalPrice": 65.87,
+        "category": "nasiol",
+        "brand": "Nasiol",
+        "image": "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop"
+    },
+    {
+        "id": 1014,
+        "name": "Nasiol Detailer Shine",
+        "description": "Spray pentru finisaj - Strălucire și protecție între spălări",
+        "price": 75,
+        "originalPrice": 120.49,
+        "category": "nasiol",
+        "brand": "Nasiol",
+        "image": "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop"
+    },
+    {
+        "id": 1015,
+        "name": "Nasiol Universal Precleaner",
+        "description": "Curățător universal pre-aplicare - Pregătește suprafața pentru coating",
+        "price": 45,
+        "originalPrice": 75.0,
+        "category": "nasiol",
+        "brand": "Nasiol",
+        "image": "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop"
+    },
+    {
+        "id": 1016,
+        "name": "Nasiol Magic APC",
+        "description": "Curățător universal concentrat - Pentru toate suprafețele",
+        "price": 40,
+        "originalPrice": 97.46,
+        "category": "nasiol",
+        "brand": "Nasiol",
+        "image": "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop"
+    },
+    {
+        "id": 1017,
+        "name": "Nasiol MetalCoat F2",
+        "description": "Protecție ceramică pentru suprafețe metalice - Anti-coroziune și strălucire",
+        "price": 150,
+        "originalPrice": 218.48,
+        "category": "nasiol",
+        "brand": "Nasiol",
+        "image": "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop"
+    },
+    {
+        "id": 1018,
+        "name": "Nasiol Cabin Care",
+        "description": "Protecție și curățare pentru interior - Aspect proaspăt și protecție UV",
+        "price": 95,
+        "originalPrice": 163.33,
+        "category": "nasiol",
+        "brand": "Nasiol",
+        "image": "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop"
+    },
+    {
+        "id": 1019,
+        "name": "Nasiol Nano Seat Protect",
+        "description": "Protecție nano pentru scaune - Repelent la lichide și pete",
+        "price": 110,
+        "originalPrice": 175.11,
+        "category": "nasiol",
+        "brand": "Nasiol",
+        "image": "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop"
+    },
+    {
+        "id": 1020,
+        "name": "Nasiol Leather Cleaner",
+        "description": "Curățător special pentru piele - Formula blândă și eficientă",
+        "price": 45,
+        "originalPrice": 65.87,
+        "category": "nasiol",
+        "brand": "Nasiol",
+        "image": "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop"
+    },
+    {
+        "id": 1021,
+        "name": "Nasiol Team APC 500ml Concentrat",
+        "description": "Curățător universal concentrat profesional - Eficiență maximă",
+        "price": 65,
+        "originalPrice": 97.46,
+        "category": "nasiol",
+        "brand": "Nasiol",
+        "image": "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop"
+    },
+    {
+        "id": 1022,
+        "name": "Nasiol Cleanion 500ml",
+        "description": "Soluție de curățare avansată - Pentru toate tipurile de suprafețe",
+        "price": 50,
+        "originalPrice": 76.04,
+        "category": "nasiol",
+        "brand": "Nasiol",
+        "image": "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop"
+    },
+    {
+        "id": 1023,
+        "name": "Nasiol Cabin Shine",
+        "description": "Spray pentru finisaj interior - Strălucire și protecție pentru bord",
+        "price": 60,
+        "originalPrice": 87.82,
+        "category": "nasiol",
+        "brand": "Nasiol",
+        "image": "https://images.unsplash.com/photo-1583394293214-4b5a2a88b49f?w=400&h=300&fit=crop"
+    }
+];
+
+// Merge all products together
+const allProducts = [...batteryProducts, ...nasiolProducts];
+
 
         let cart = [];
         let allProducts = [...batteryProducts, ...detailingProducts];
@@ -1221,4 +1453,5 @@
     </script>
 </body>
 </html>
+
 
